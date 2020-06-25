@@ -13,7 +13,7 @@ import BackIcon from 'react-native-vector-icons/Ionicons';
 import {Button, CheckBox} from 'react-native-elements';
 import Colors from '../../../constants/Colors';
 
-const PaymentScreen = ({navigation}) => {
+const TermScreen = ({navigation}) => {
   const [termCheck, setTermCheck] = useState(false);
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -57,13 +57,13 @@ const PaymentScreen = ({navigation}) => {
               checkedColor={Colors.secondaryGradient}
               onPress={() => setTermCheck(value => !value)}
             />
-            <Text style={{alignSelf: 'center'}}>
+            <Text style={styles.agreeText}>
               I agree to terms and conditions
             </Text>
           </View>
           <TouchableWithoutFeedback
             disabled={!termCheck}
-            onPress={() => navigation.navigate('Dashboard')}>
+            onPress={() => navigation.navigate('OrderDone')}>
             <LinearGradient
               start={{x: 0, y: 0}}
               end={{x: 1, y: 0}}
@@ -133,6 +133,9 @@ const styles = StyleSheet.create({
     marginLeft: '8%',
     marginBottom: 10,
   },
+  agreeText: {
+    textAlign: 'center',
+  },
   gradient: {
     width: '90%',
     height: '10%',
@@ -151,4 +154,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default PaymentScreen;
+export default TermScreen;

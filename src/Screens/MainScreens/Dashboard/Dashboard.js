@@ -1,57 +1,98 @@
-import React, {useState} from 'react';
-import {StyleSheet, Platform, View, TextInput, Text} from 'react-native';
+import React, {useState, useRef} from 'react';
+import {
+  StyleSheet,
+  Platform,
+  View,
+  TextInput,
+  Text,
+  Button,
+} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Colors from '../../../constants/Colors';
 import {Card, Icon} from 'react-native-elements';
+//import MapView from 'react-native-maps';
+import FilterMenu from '../../../Components/FilterMenu/FilterMenu';
 
 const Dashboard = ({navigation}) => {
   const [searchValue, setSearchValue] = useState('');
+  // const showFilterRef = useRef().current;
+
+  // const showFillterMenu = showFilterRef.show();
+  // const hideFillterMenu = showFilterRef.hide();
   return (
-    <LinearGradient
-      start={{x: 0, y: 0}}
-      end={{x: 1, y: 0}}
-      colors={[Colors.secondaryGradient, Colors.primaryGradient]}
-      style={styles.screen}>
-      <View style={styles.iconsContainer}>
-        <Icon
-          type={Platform.OS === 'android' ? 'materialicon' : 'ionicons'}
-          name={Platform.OS === 'android' ? 'menu' : 'ios-menu'}
-          color="white"
-          size={25}
-          style={styles.leftIcon}
-        />
-        <View style={styles.rightIcons}>
-          <Icon type="feather" name="sliders" color="white" size={25} />
-          <Icon type="antdesign" name="shoppingcart" color="white" size={25} />
-        </View>
-      </View>
-      <Card containerStyle={styles.card}>
-        <View style={styles.floatCard}>
-          <View style={styles.inputContainer}>
-            <Icon
-              type={Platform.OS === 'android' ? 'materialicons' : 'ionicons'}
-              name={Platform.OS === 'android' ? 'search' : 'ios-search'}
-              size={30}
-              style={styles.inputLogo}
-            />
-            <TextInput
-              value={searchValue}
-              onChangeText={value => setSearchValue(value)}
-              placeholder="Search your location"
-              style={[styles.input]}
-            />
-          </View>
-          <View style={styles.circleSend}>
+    <>
+      <LinearGradient
+        start={{x: 0, y: 0}}
+        end={{x: 1, y: 0}}
+        colors={[Colors.secondaryGradient, Colors.primaryGradient]}
+        style={styles.screen}>
+        <View style={styles.iconsContainer}>
+          <Icon
+            type={Platform.OS === 'android' ? 'materialicon' : 'ionicons'}
+            name={Platform.OS === 'android' ? 'menu' : 'ios-menu'}
+            color="white"
+            size={25}
+            style={styles.leftIcon}
+          />
+          <View style={styles.rightIcons}>
             <Icon
               type="feather"
-              name="send"
+              name="sliders"
+              onPress={() => showFillterMenu()}
+              color="white"
               size={25}
-              color={Colors.primaryGradient}
+            />
+            <Icon
+              type="antdesign"
+              name="shoppingcart"
+              color="white"
+              size={25}
             />
           </View>
         </View>
-      </Card>
-    </LinearGradient>
+        <Card containerStyle={styles.card}>
+          <View style={styles.floatCard}>
+            <View style={styles.inputContainer}>
+              <Icon
+                type={Platform.OS === 'android' ? 'materialicons' : 'ionicons'}
+                name={Platform.OS === 'android' ? 'search' : 'ios-search'}
+                size={30}
+                style={styles.inputLogo}
+              />
+              <TextInput
+                value={searchValue}
+                onChangeText={value => setSearchValue(value)}
+                placeholder="Search your location"
+                style={[styles.input]}
+              />
+            </View>
+            <View style={styles.circleSend}>
+              <Icon
+                type="feather"
+                name="send"
+                size={25}
+                color={Colors.primaryGradient}
+              />
+            </View>
+          </View>
+          {/* <View style={{flex: 1}}>
+          <MapView
+            initialRegion={{
+              latitude: 37.78825,
+              longitude: -122.4324,
+              latitudeDelta: 0.0922,
+              longitudeDelta: 0.0421,
+            }}
+          />
+          <View>
+        </View> */}
+        </Card>
+      </LinearGradient>
+      {/* <FilterMenu
+        showFilter={showFilterRef}
+        hideFillterMenu={hideFillterMenu}
+      /> */}
+    </>
   );
 };
 
@@ -65,6 +106,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 0,
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
+    justifyContent: 'flex-start',
   },
   // mapView: {
   //   position: 'absolute',
@@ -123,26 +165,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  slider: {
+  panelContainer: {
     flex: 1,
-  },
-  headerLayoutStyle: {
-    width: 100,
-    height: 100,
-    backgroundColor: 'orange',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  slidingPanelLayoutStyle: {
-    width: 100,
-    height: 100,
-    backgroundColor: '#7E52A0',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  commonTextStyle: {
-    color: 'white',
-    fontSize: 18,
+    justifyContent: 'flex-end',
   },
 });
 export default Dashboard;
