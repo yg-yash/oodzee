@@ -121,7 +121,7 @@ const PaymentDataSceen = ({navigation}) => {
               </View>
             </View>
             <View style={styles.validContainer}>
-              <Text style={styles.cardText}> CVV</Text>
+              <Text style={styles.cardText}>CVV</Text>
               <TextInput
                 value={cvv}
                 style={styles.cvvInput}
@@ -268,8 +268,8 @@ const styles = StyleSheet.create({
   cvvInput: {
     borderBottomWidth: 1,
     borderBottomColor: '#999999',
-    fontSize: 24,
-    width: '100%',
+    fontSize: 10,
+    width: '120%',
     color: '#999999',
   },
   cardMoreDetails: {

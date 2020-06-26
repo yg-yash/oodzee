@@ -11,7 +11,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import Colors from '../../../../constants/Colors';
 import {Card, Icon} from 'react-native-elements';
 
-const OrderDoneScreen = navigation => {
+const OrderDoneScreen = ({navigation}) => {
   return (
     <LinearGradient
       colors={[Colors.primaryGradient, Colors.secondaryGradient]}

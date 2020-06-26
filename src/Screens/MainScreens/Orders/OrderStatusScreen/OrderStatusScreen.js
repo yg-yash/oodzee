@@ -4,7 +4,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import Colors from '../../../../constants/Colors';
 import {Card, Icon} from 'react-native-elements';
 
-const OrderStatusScreen = navigation => {
+const OrderStatusScreen = ({navigation}) => {
   return (
     <LinearGradient
       colors={[Colors.primaryGradient, Colors.secondaryGradient]}
@@ -14,7 +14,9 @@ const OrderStatusScreen = navigation => {
           <View style={styles.upperCardContainer}>
             <View style={styles.iconContainer}>
               <Icon
-                type={Platform.OS === 'android' ? 'materialicons' : 'ionicons'}
+                type={
+                  Platform.OS === 'android' ? 'materialicons' : 'ionicons'
+                }
                 name={Platform.OS === 'android' ? 'close' : 'ios-close'}
                 color={Colors.secondaryGradient}
                 size={20}
@@ -52,7 +54,11 @@ const OrderStatusScreen = navigation => {
                     onPress={() => navigation.navigate('OrderDone')}>
                     Delivery
                   </Text>
-                  <Text style={styles.pickupText}>PICK UP</Text>
+                  <Text
+                    style={styles.pickupText}
+                    onPress={() => navigation.navigate('OrderDone')}>
+                    PICK UP
+                  </Text>
                 </View>
               </View>
             </View>

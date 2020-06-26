@@ -117,11 +117,11 @@ const SignUpScreen = ({navigation}) => {
             </Text>
           </View>
           <LinearGradient
-            start={{x: 0, y: 0}}
+            start={{x: 0, y: 1}}
             end={{x: 1, y: 0}}
             colors={[Colors.secondaryGradient, Colors.primaryGradient]}
             style={styles.gradient}>
-            <Text style={styles.btnText}>Here We Go !</Text>
+            <Text style={styles.btnText}>JOIN US !</Text>
           </LinearGradient>
           <View style={styles.orContainer}>
             <Text>OR</Text>

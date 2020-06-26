@@ -57,13 +57,22 @@ const TermScreen = ({navigation}) => {
               checkedColor={Colors.secondaryGradient}
               onPress={() => setTermCheck(value => !value)}
             />
-            <Text style={styles.agreeText}>
-              I agree to terms and conditions
-            </Text>
+            <View style={{flexDirection: 'row', flexWrap: 'wrap'}}>
+              <Text style={styles.agreeText}>I agree to the </Text>
+              <Text
+                style={[
+                  styles.agreeText,
+                  styles.gradientText,
+                ]}>{`Terms & Conditions `}</Text>
+              <Text style={styles.agreeText}>and the </Text>
+              <Text style={[styles.agreeText, styles.gradientText]}>
+                Privacy Policy
+              </Text>
+            </View>
           </View>
           <TouchableWithoutFeedback
             disabled={!termCheck}
-            onPress={() => navigation.navigate('FoodDetail')}>
+            onPress={() => navigation.navigate('Dashboard')}>
             <LinearGradient
               start={{x: 0, y: 0}}
               end={{x: 1, y: 0}}
@@ -129,13 +138,15 @@ const styles = StyleSheet.create({
   },
   termCheckContainer: {
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'space-around',
     alignItems: 'center',
     marginBottom: 10,
-    marginHorizontal: '20%',
+    marginRight: '10%',
+    marginLeft: '5%',
   },
   agreeText: {
-    //    textAlign: 'center',
+    fontSize: 12,
+    lineHeight: 18,
   },
   gradient: {
     width: '90%',
@@ -152,6 +163,9 @@ const styles = StyleSheet.create({
     lineHeight: 21,
     letterSpacing: 2,
     textTransform: 'uppercase',
+  },
+  gradientText: {
+    color: Colors.secondaryGradient,
   },
 });
 

@@ -3,7 +3,7 @@ import {
   StyleSheet,
   Text,
   View,
-  ImageBackground,
+  Image,
   TouchableWithoutFeedback,
   Dimensions,
 } from 'react-native';
@@ -29,46 +29,60 @@ const FoodDetail = ({navigation}) => {
   return (
     <View style={styles.screen}>
       <View style={styles.container}>
-        <View>
-          <ImageBackground
+        <View style={styles.imageContainer}>
+          <Image
             style={styles.image}
-            resizeMethod="scale"
-            source={{
-              uri:
-                'https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg',
-            }}
+            resizeMode="cover"
+            source={require('../../../../assests/images/burger.jpg')}
           />
-        </View>
-        <View style={styles.innerContainer}>
-          <View style={styles.line} />
-          <View style={styles.headingRow}>
-            <Text style={styles.itemText}>Draggen Burger</Text>
-            <Text style={styles.rupeeText}>₹ 450</Text>
-          </View>
-          <Text style={styles.smallText}>A One restaurent, Vegas</Text>
-          <View style={styles.rating}>
-            <Text style={styles.ratingText}>4.0</Text>
-            <View style={styles.ratingIcons}>
-              <Icon type="antdesign" name="star" color={'#FFC107'} size={10} />
-              <Icon type="antdesign" name="star" color={'#FFC107'} size={10} />
-              <Icon type="antdesign" name="star" color={'#FFC107'} size={10} />
-              <Icon type="antdesign" name="star" color={'#FFC107'} size={10} />
-              <Icon type="antdesign" name="staro" color={'#FFC107'} size={10} />
-            </View>
-          </View>
-        </View>
-        <View style={[styles.innerContainer, {borderBottomWidth: 0}]}>
-          <Text style={[styles.smallText, {textTransform: 'none'}]}>
-            It is a long established fact that a reader will be distracted by
-            the readable content of a page when looking at its layout.
-          </Text>
-          <Text style={[styles.smallText, {textTransform: 'none'}]}>
-            Contrary to popular belief, Lorem Ipsum is not simply random text.
-            It has roots in a piece of classical Latin literature from 45 BC,
-            making it over 2000 years old.
-          </Text>
+          {/* this icon should be on top of image */}
+          {/* <Icon
+            type="antdesign"
+            name="hearto"
+            color={'black'}
+            size={20}
+            style={{
+              margin: 5,
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: 100,
+              height: 100,
+
+            }}
+          /> */}
         </View>
       </View>
+      <View style={styles.innerContainer}>
+        <View style={styles.line} />
+        <View style={styles.headingRow}>
+          <Text style={styles.itemText}>Draggen Burger</Text>
+          <Text style={styles.rupeeText}>₹ 450</Text>
+        </View>
+        <Text style={styles.smallText}>A One restaurent, Vegas</Text>
+        <View style={styles.rating}>
+          <Text style={styles.ratingText}>4.0</Text>
+          <View style={styles.ratingIcons}>
+            <Icon type="antdesign" name="star" color={'#FFC107'} size={10} />
+            <Icon type="antdesign" name="star" color={'#FFC107'} size={10} />
+            <Icon type="antdesign" name="star" color={'#FFC107'} size={10} />
+            <Icon type="antdesign" name="star" color={'#FFC107'} size={10} />
+            <Icon type="antdesign" name="staro" color={'#FFC107'} size={10} />
+          </View>
+        </View>
+      </View>
+      <View style={[styles.innerContainer, {borderBottomWidth: 0}]}>
+        <Text style={[styles.smallText, {textTransform: 'none'}]}>
+          It is a long established fact that a reader will be distracted by the
+          readable content of a page when looking at its layout.
+        </Text>
+        <Text style={[styles.smallText, {textTransform: 'none'}]}>
+          Contrary to popular belief, Lorem Ipsum is not simply random text. It
+          has roots in a piece of classical Latin literature from 45 BC, making
+          it over 2000 years old.
+        </Text>
+      </View>
+
       <View style={styles.buttonContainer}>
         <TouchableWithoutFeedback
           onPress={() => navigation.navigate('PaymentData')}>
@@ -78,7 +92,6 @@ const FoodDetail = ({navigation}) => {
             colors={[Colors.secondaryGradient, Colors.primaryGradient]}
             style={styles.gradient}>
             <View style={{flexDirection: 'row'}}>
-              {/* <Text style={[styles.btnText, {fontSize: 20}]}>+</Text> */}
               <Icon
                 type="MaterialIcons"
                 name="add"
@@ -102,21 +115,19 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   container: {
-    flex: 1,
-    borderTopLeftRadius: 25,
-    borderTopRightRadius: 25,
+    borderTopRightRadius: 15,
+    borderTopLeftRadius: 15,
+    overflow: 'hidden',
     backgroundColor: 'white',
-    marginTop: 5,
+    marginTop: 3,
   },
   imageContainer: {
     height: Dimensions.get('screen').height / 3.2,
-    borderRadius: 10,
-    marginTop: 10,
+    width: '100%',
   },
   image: {
     width: '100%',
-    height: '35%',
-    // height: '100%',
+    height: '100%',
   },
   innerContainer: {
     backgroundColor: 'white',

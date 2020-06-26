@@ -16,6 +16,8 @@ export default function LandingScreen({navigation}) {
     <View style={styles.screen}>
       <StatusBar backgroundColor={Colors.primaryGradient} />
       <LinearGradient
+        start={{x: 1, y: 0}}
+        end={{x: 0, y: 1}}
         colors={[Colors.primaryGradient, Colors.secondaryGradient]}
         style={styles.linearGradient}>
         <View style={styles.card}>

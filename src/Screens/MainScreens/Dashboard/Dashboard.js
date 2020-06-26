@@ -38,7 +38,7 @@ const Dashboard = ({navigation}) => {
             <Icon
               type="feather"
               name="sliders"
-              //              onPress={() =>}
+              //             onPress={() =>}
               color="white"
               size={25}
             />
@@ -47,6 +47,7 @@ const Dashboard = ({navigation}) => {
               name="shoppingcart"
               color="white"
               size={25}
+              onPress={() => navigation.navigate('FoodDetail')}
             />
           </View>
         </View>
@@ -72,7 +73,6 @@ const Dashboard = ({navigation}) => {
                 name="send"
                 size={25}
                 color={Colors.primaryGradient}
-                onPress={() => navigation.navigate('PaymentData')}
               />
             </View>
           </View>

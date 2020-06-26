@@ -35,6 +35,8 @@ export default ({setShowRealApp}) => {
   const _renderItem = ({item}) => {
     return (
       <LinearGradient
+        start={{x: 1, y: 0}}
+        end={{x: 0, y: 1}}
         colors={[Colors.primaryGradient, Colors.secondaryGradient]}
         style={styles.linearGradient}>
         <View style={styles.slide}>
@@ -44,13 +46,22 @@ export default ({setShowRealApp}) => {
         {item.key !== 3 && (
           <View style={styles.paginationContainer}>
             <View
-              style={[styles.pagination, {opacity: item.key === 1 ? 1 : 0.25}]}
+              style={[
+                styles.pagination,
+                {opacity: item.key === 1 ? 1 : 0.25},
+              ]}
             />
             <View
-              style={[styles.pagination, {opacity: item.key === 2 ? 1 : 0.25}]}
+              style={[
+                styles.pagination,
+                {opacity: item.key === 2 ? 1 : 0.25},
+              ]}
             />
             <View
-              style={[styles.pagination, {opacity: item.key === 3 ? 1 : 0.25}]}
+              style={[
+                styles.pagination,
+                {opacity: item.key === 3 ? 1 : 0.25},
+              ]}
             />
           </View>
         )}
@@ -110,7 +121,7 @@ var styles = StyleSheet.create({
 
   slide: {
     flex: 1,
-
+    marginTop: '40%',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -163,7 +174,7 @@ var styles = StyleSheet.create({
     bottom: 0,
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 200,
+    marginBottom: '70%',
   },
   pagination: {
     borderColor: 'white',

@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
   },
   skipBtn: {
-    marginTop: '5%',
+    marginTop: '7%',
     color: '#999999',
     fontSize: 14,
     lineHeight: 21,

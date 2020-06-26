@@ -6,7 +6,7 @@ import {Card, Icon} from 'react-native-elements';
 import CheckIcon from 'react-native-vector-icons/Feather';
 import {TextInput} from 'react-native-gesture-handler';
 
-const OrderStatusScreen = navigation => {
+const OrderStatusScreen = ({navigation}) => {
   const [feedbackText, setFeedbackText] = useState('');
   return (
     <LinearGradient
@@ -21,7 +21,7 @@ const OrderStatusScreen = navigation => {
                 name={Platform.OS === 'android' ? 'close' : 'ios-close'}
                 color={Colors.secondaryGradient}
                 size={20}
-                onPress={() => navigation.pop()}
+                onPress={() => navigation.replace('Dashboard')}
               />
             </View>
             <View style={styles.mainContaier}>
@@ -62,7 +62,11 @@ const OrderStatusScreen = navigation => {
                   </View>
                   <View style={styles.buttonContainer}>
                     <View style={styles.button}>
-                      <Text style={styles.submitText}>SUBMIT</Text>
+                      <Text
+                        style={styles.submitText}
+                        onPress={() => navigation.popToTop()}>
+                        SUBMIT
+                      </Text>
                     </View>
                   </View>
                 </View>

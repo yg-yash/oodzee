@@ -4,7 +4,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/Feather';
 import Colors from '../../../constants/Colors';
 
-const ThankYouScreen = navigation => {
+const ThankYouScreen = ({navigation}) => {
   return (
     <LinearGradient
       colors={[Colors.primaryGradient, Colors.secondaryGradient]}
@@ -18,7 +18,7 @@ const ThankYouScreen = navigation => {
         <View style={styles.gradient}>
           <Text
             style={styles.btnText}
-            onPress={() => navigation.navigate('Order')}>
+            onPress={() => navigation.navigate('OrderStatus')}>
             continue shopping
           </Text>
         </View>

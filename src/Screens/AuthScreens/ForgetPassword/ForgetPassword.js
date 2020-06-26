@@ -64,7 +64,7 @@ const ForgetPasswordScreen = ({navigation}) => {
           </View>
 
           <LinearGradient
-            start={{x: 0, y: 0}}
+            start={{x: 0, y: 1}}
             end={{x: 1, y: 0}}
             colors={[Colors.secondaryGradient, Colors.primaryGradient]}
             style={styles.gradient}>
@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FAFAFA',
     borderRadius: 21,
     width: '89%',
-    marginVertical: 10,
+    marginVertical: 20,
   },
   inputLogo: {
     marginLeft: '10%',

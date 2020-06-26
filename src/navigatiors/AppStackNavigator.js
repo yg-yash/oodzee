@@ -14,7 +14,9 @@ import PaymentScreen from '../Screens/MainScreens/PaymentsScreen/PaymentScreen/P
 const Stack = createStackNavigator();
 
 const AppStackNavigator = () => (
-  <Stack.Navigator initialRouteName="AddPayment">
+  <Stack.Navigator
+    initialRouteName="AddPayment"
+    screenOptions={{headerShown: false}}>
     <Stack.Screen name="AddPayment" component={AddPaymentMethodScreen} />
     <Stack.Screen name="Terms" component={TermsScreen} />
     <Stack.Screen name="Dashboard" component={DashboardScreen} />
