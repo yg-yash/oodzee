@@ -100,8 +100,7 @@ const SignInScreen = ({navigation}) => {
               Forgot Password?
             </Text>
           </View>
-          <TouchableWithoutFeedback
-            onPress={() => navigation.navigate('Payment')}>
+          <TouchableWithoutFeedback onPress={() => navigation.navigate('App')}>
             <LinearGradient
               start={{x: 0, y: 0}}
               end={{x: 1, y: 0}}

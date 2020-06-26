@@ -23,7 +23,7 @@ export const fetchUserSuccess = (state, {user}) => ({
 
 export const fetchUserFailure = (state, {errorMessage}) => ({
   ...state,
-  user: {},
+  user: {authentiacted: false},
   userIsLoading: false,
   userErrorMessage: errorMessage,
 });
@@ -32,7 +32,7 @@ export const fetchUserFailure = (state, {errorMessage}) => ({
  * @see https://github.com/infinitered/reduxsauce#createreducer
  */
 export const reducer = createReducer(INITIAL_STATE, {
-  // [ExampleTypes.FETCH_USER_LOADING]: fetchUserLoading,
-  // [ExampleTypes.FETCH_USER_SUCCESS]: fetchUserSuccess,
-  // [ExampleTypes.FETCH_USER_FAILURE]: fetchUserFailure,
+  [ExampleTypes.FETCH_USER_LOADING]: fetchUserLoading,
+  [ExampleTypes.FETCH_USER_SUCCESS]: fetchUserSuccess,
+  [ExampleTypes.FETCH_USER_FAILURE]: fetchUserFailure,
 });

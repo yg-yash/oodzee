@@ -18,6 +18,7 @@ const OrderStatusScreen = navigation => {
                 name={Platform.OS === 'android' ? 'close' : 'ios-close'}
                 color={Colors.secondaryGradient}
                 size={20}
+                onPress={() => navigation.pop()}
               />
             </View>
             <View style={styles.mainContaier}>
@@ -46,7 +47,11 @@ const OrderStatusScreen = navigation => {
                   Your food is preparing!
                 </Text>
                 <View style={styles.button}>
-                  <Text style={styles.btnText}>Delivery</Text>
+                  <Text
+                    style={styles.btnText}
+                    onPress={() => navigation.navigate('OrderDone')}>
+                    Delivery
+                  </Text>
                   <Text style={styles.pickupText}>PICK UP</Text>
                 </View>
               </View>

@@ -25,6 +25,7 @@ const OrderDoneScreen = navigation => {
                 name={Platform.OS === 'android' ? 'close' : 'ios-close'}
                 color={Colors.secondaryGradient}
                 size={20}
+                onPress={() => navigation.goBack()}
               />
             </View>
             <View style={styles.mainContaier}>
@@ -50,7 +51,11 @@ const OrderDoneScreen = navigation => {
             </View>
             <View style={styles.buttonContainer}>
               <View style={styles.button}>
-                <Text style={styles.submitText}>SUBMIT</Text>
+                <Text
+                  style={styles.submitText}
+                  onPress={() => navigation.navigate('OrderDoneComplete')}>
+                  SUBMIT
+                </Text>
               </View>
             </View>
           </View>

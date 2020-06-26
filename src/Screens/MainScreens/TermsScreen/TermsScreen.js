@@ -47,7 +47,7 @@ const TermScreen = ({navigation}) => {
           <View style={styles.textContainer}>
             <Text style={styles.mainText}>Terms of service</Text>
             <Text style={styles.secondaryText}>
-              Please confirm that you agreeto our Tearms of Service and Privacy
+              Please confirm that you agree to our Terms of Service and Privacy
               policy:
             </Text>
           </View>
@@ -63,7 +63,7 @@ const TermScreen = ({navigation}) => {
           </View>
           <TouchableWithoutFeedback
             disabled={!termCheck}
-            onPress={() => navigation.navigate('OrderDone')}>
+            onPress={() => navigation.navigate('FoodDetail')}>
             <LinearGradient
               start={{x: 0, y: 0}}
               end={{x: 1, y: 0}}
@@ -129,12 +129,13 @@ const styles = StyleSheet.create({
   },
   termCheckContainer: {
     flexDirection: 'row',
-    alignSelf: 'flex-start',
-    marginLeft: '8%',
+    justifyContent: 'center',
+    alignItems: 'center',
     marginBottom: 10,
+    marginHorizontal: '20%',
   },
   agreeText: {
-    textAlign: 'center',
+    //    textAlign: 'center',
   },
   gradient: {
     width: '90%',

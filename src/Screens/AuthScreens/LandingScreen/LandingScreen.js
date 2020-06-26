@@ -65,11 +65,10 @@ const styles = StyleSheet.create({
   card: {
     marginTop: 0,
     marginHorizontal: 0,
-    height: Dimensions.get('window').height / 1.3,
+    height: Dimensions.get('window').height / 1.5,
   },
   backgroundImage: {
     position: 'absolute',
-
     bottom: '30%',
     left: 40,
     width: 300,
@@ -95,9 +94,9 @@ const styles = StyleSheet.create({
   },
   signUp: {
     flexDirection: 'row',
-    marginTop: 20,
-    justifyContent: 'center',
+    position: 'absolute',
     alignItems: 'center',
+    bottom: 10,
   },
   joinText: {
     fontSize: 14,

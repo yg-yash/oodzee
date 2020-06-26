@@ -11,7 +11,7 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 import BackIcon from 'react-native-vector-icons/Ionicons';
 import {Button} from 'react-native-elements';
-import Colors from '../../../constants/Colors';
+import Colors from '../../../../constants/Colors';
 
 const PaymentScreen = ({navigation}) => {
   return (
@@ -39,7 +39,7 @@ const PaymentScreen = ({navigation}) => {
             <Text style={styles.cardText}>Add your card</Text>
           </View>
           <Image
-            source={require('../../../../assests/images/8.png')}
+            source={require('../../../../../assests/images/8.png')}
             style={styles.logoImage}
             resizeMode={'center'}
           />
@@ -54,7 +54,7 @@ const PaymentScreen = ({navigation}) => {
             </Text>
           </View>
           <TouchableWithoutFeedback
-            onPress={() => navigation.navigate('Payment')}>
+            onPress={() => navigation.navigate('Terms')}>
             <LinearGradient
               start={{x: 0, y: 0}}
               end={{x: 1, y: 0}}
@@ -132,7 +132,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 24,
   },
-
   gradient: {
     width: '90%',
     height: '10%',

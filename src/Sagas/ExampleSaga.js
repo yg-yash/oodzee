@@ -9,16 +9,21 @@ import ExampleActions from '../store/Example/Actions';
  * Feel free to remove it.
  */
 export function* fetchUser() {
+  console.log('called');
+
   // Dispatch a redux action using `put()`
   // @see https://redux-saga.js.org/docs/basics/DispatchingActions.html
-  // yield put(ExampleActions.fetchUserLoading())
-  // // Fetch user informations from an API
-  // const user = yield call(userService.fetchUser)
+  yield put(ExampleActions.fetchUserLoading());
+  yield put(ExampleActions.fetchUserSuccess('asda'));
+  // Fetch user informations from an API
+  // const user = yield call(userService.fetchUser);
   // if (user) {
-  //   yield put(ExampleActions.fetchUserSuccess(user))
+  //   yield put(ExampleActions.fetchUserSuccess(user));
   // } else {
   //   yield put(
-  //     ExampleActions.fetchUserFailure('There was an error while fetching user informations.')
-  //   )
+  //     ExampleActions.fetchUserFailure(
+  //       'There was an error while fetching user informations.',
+  //     ),
+  //   );
   // }
 }

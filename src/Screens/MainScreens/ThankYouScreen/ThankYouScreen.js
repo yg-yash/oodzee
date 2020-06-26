@@ -18,7 +18,7 @@ const ThankYouScreen = navigation => {
         <View style={styles.gradient}>
           <Text
             style={styles.btnText}
-            onPress={() => navigation.navigate('SignIn')}>
+            onPress={() => navigation.navigate('Order')}>
             continue shopping
           </Text>
         </View>
