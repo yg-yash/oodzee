@@ -7,10 +7,11 @@ import SignUpScreen from '../Screens/AuthScreens/SignUpScreen/SignUpScreen';
 import AppStackNavigator from './AppStackNavigator';
 
 const Stack = createStackNavigator();
+
 export default function MainStackNavigator() {
   return (
     <Stack.Navigator
-      initialRouteName="Landing"
+      initialRouteName="SignIn"
       screenOptions={{headerShown: false}}>
       <Stack.Screen name="Landing" component={LandingPage} />
       <Stack.Screen name="SignIn" component={SignInScreen} />

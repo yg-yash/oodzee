@@ -46,7 +46,7 @@ const Dashboard = ({navigation}) => {
               type="antdesign"
               name="shoppingcart"
               color="white"
-              size={25}
+              size={30}
               onPress={() => navigation.navigate('FoodDetail')}
             />
           </View>

@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, TouchableWithoutFeedback} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/Feather';
 import Colors from '../../../constants/Colors';
@@ -15,13 +15,12 @@ const ThankYouScreen = ({navigation}) => {
       </View>
       <View style={styles.bottomContent}>
         <Text style={styles.thankText}>Thank You!</Text>
-        <View style={styles.gradient}>
-          <Text
-            style={styles.btnText}
-            onPress={() => navigation.navigate('OrderStatus')}>
-            continue shopping
-          </Text>
-        </View>
+        <TouchableWithoutFeedback
+          onPress={() => navigation.navigate('OrderStatus')}>
+          <View style={styles.gradient}>
+            <Text style={styles.btnText}>continue shopping</Text>
+          </View>
+        </TouchableWithoutFeedback>
       </View>
     </LinearGradient>
   );

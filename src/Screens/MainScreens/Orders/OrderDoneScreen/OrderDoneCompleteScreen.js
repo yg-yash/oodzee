@@ -1,10 +1,17 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, View, Dimensions, Platform} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Dimensions,
+  Platform,
+  TextInput,
+  TouchableWithoutFeedback,
+} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Colors from '../../../../constants/Colors';
 import {Card, Icon} from 'react-native-elements';
 import CheckIcon from 'react-native-vector-icons/Feather';
-import {TextInput} from 'react-native-gesture-handler';
 
 const OrderStatusScreen = ({navigation}) => {
   const [feedbackText, setFeedbackText] = useState('');
@@ -58,17 +65,17 @@ const OrderStatusScreen = ({navigation}) => {
                       style={styles.input}
                       multiline={true}
                       numberOfLines={4}
+                      scrollEnabled
                     />
                   </View>
-                  <View style={styles.buttonContainer}>
-                    <View style={styles.button}>
-                      <Text
-                        style={styles.submitText}
-                        onPress={() => navigation.popToTop()}>
-                        SUBMIT
-                      </Text>
+                  <TouchableWithoutFeedback
+                    onPress={() => navigation.navigate('UserMenu')}>
+                    <View style={styles.buttonContainer}>
+                      <View style={styles.button}>
+                        <Text style={styles.submitText}>SUBMIT</Text>
+                      </View>
                     </View>
-                  </View>
+                  </TouchableWithoutFeedback>
                 </View>
               </View>
             </View>
@@ -96,7 +103,7 @@ const styles = StyleSheet.create({
     margin: 0,
   },
   upperCardContainer: {
-    paddingTop: 10,
+    paddingTop: 7,
     paddingHorizontal: 10,
   },
   iconContainer: {
@@ -106,7 +113,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   itemText: {
-    marginTop: '5%',
+    marginTop: 10,
     textAlign: 'center',
     fontFamily: 'Poppins',
     fontSize: 20,
@@ -133,7 +140,7 @@ const styles = StyleSheet.create({
     color: '#535151',
   },
   bottomContainer: {
-    marginTop: '13%',
+    marginTop: 15,
     alignItems: 'flex-start',
   },
   ratingContainer: {
@@ -156,7 +163,6 @@ const styles = StyleSheet.create({
   inputContainer: {
     backgroundColor: '#FAFAFA',
     borderRadius: 21,
-    // width: '100%',
     marginTop: '10%',
   },
   feedBackInput: {
@@ -186,6 +192,9 @@ const styles = StyleSheet.create({
     lineHeight: 21,
     letterSpacing: 2,
     fontWeight: 'bold',
+  },
+  input: {
+    height: 100,
   },
 });
 

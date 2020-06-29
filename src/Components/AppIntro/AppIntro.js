@@ -42,29 +42,29 @@ export default ({setShowRealApp}) => {
         <View style={styles.slide}>
           <Text style={styles.title}>{item.title}</Text>
           <Text style={styles.text}>{item.text}</Text>
+          {item.key !== 3 && (
+            <View style={styles.paginationContainer}>
+              <View
+                style={[
+                  styles.pagination,
+                  {opacity: item.key === 1 ? 1 : 0.25},
+                ]}
+              />
+              <View
+                style={[
+                  styles.pagination,
+                  {opacity: item.key === 2 ? 1 : 0.25},
+                ]}
+              />
+              <View
+                style={[
+                  styles.pagination,
+                  {opacity: item.key === 3 ? 1 : 0.25},
+                ]}
+              />
+            </View>
+          )}
         </View>
-        {item.key !== 3 && (
-          <View style={styles.paginationContainer}>
-            <View
-              style={[
-                styles.pagination,
-                {opacity: item.key === 1 ? 1 : 0.25},
-              ]}
-            />
-            <View
-              style={[
-                styles.pagination,
-                {opacity: item.key === 2 ? 1 : 0.25},
-              ]}
-            />
-            <View
-              style={[
-                styles.pagination,
-                {opacity: item.key === 3 ? 1 : 0.25},
-              ]}
-            />
-          </View>
-        )}
 
         {item.key === 3 && (
           <View style={styles.slideThreeContent}>
@@ -168,13 +168,8 @@ var styles = StyleSheet.create({
   },
   paginationContainer: {
     flexDirection: 'row',
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    bottom: 0,
+    marginTop: 10,
     justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: '70%',
   },
   pagination: {
     borderColor: 'white',

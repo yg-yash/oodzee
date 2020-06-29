@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {
   StyleSheet,
   Text,
@@ -6,6 +6,7 @@ import {
   Dimensions,
   Platform,
   TextInput,
+  TouchableWithoutFeedback,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Colors from '../../../../constants/Colors';
@@ -49,15 +50,14 @@ const OrderDoneScreen = ({navigation}) => {
               <TextInput style={styles.otpInput} placeholder="0" />
               <TextInput style={styles.otpInput} placeholder="0" />
             </View>
-            <View style={styles.buttonContainer}>
-              <View style={styles.button}>
-                <Text
-                  style={styles.submitText}
-                  onPress={() => navigation.navigate('OrderDoneComplete')}>
-                  SUBMIT
-                </Text>
+            <TouchableWithoutFeedback
+              onPress={() => navigation.navigate('OrderDoneComplete')}>
+              <View style={styles.buttonContainer}>
+                <View style={styles.button}>
+                  <Text style={styles.submitText}>SUBMIT</Text>
+                </View>
               </View>
-            </View>
+            </TouchableWithoutFeedback>
           </View>
         </Card>
       </View>
@@ -113,6 +113,7 @@ const styles = StyleSheet.create({
   otpText: {
     fontSize: 14,
     lineHeight: 21,
+    marginBottom: 12,
   },
   otpInputContainer: {
     flexDirection: 'row',

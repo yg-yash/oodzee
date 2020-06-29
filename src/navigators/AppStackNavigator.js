@@ -10,6 +10,8 @@ import OrderDoneScreen from '../Screens/MainScreens/Orders/OrderDoneScreen/Order
 import OrderDoneCompleteScreen from '../Screens/MainScreens/Orders/OrderDoneScreen/OrderDoneCompleteScreen';
 import PaymentDataSceen from '../Screens/MainScreens/PaymentsScreen/PayementData/PaymentDataSceen';
 import PaymentScreen from '../Screens/MainScreens/PaymentsScreen/PaymentScreen/PaymentScreen';
+import Orders from '../Screens/MainScreens/Orders/Orders/Orders';
+import UserScreen from '../Screens/MainScreens/UserScreens/UserMenu';
 
 const Stack = createStackNavigator();
 
@@ -30,6 +32,8 @@ const AppStackNavigator = () => (
       component={OrderDoneCompleteScreen}
     />
     <Stack.Screen name="OrderStatus" component={OrderStatusScreen} />
+    <Stack.Screen name="Orders" component={Orders} />
+    <Stack.Screen name="UserMenu" component={UserScreen} />
   </Stack.Navigator>
 );
 

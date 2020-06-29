@@ -113,13 +113,19 @@ const FoodDetail = ({navigation}) => {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
+    backgroundColor: 'white',
+    borderTopStartRadius: 15,
+    elevation: 6,
+    shadowColor: '#999999',
+    shadowOffset: {width: 0, height: 2},
+    shadowOpacity: 0.4,
+    shadowRadius: 6,
+    overflow: 'hidden',
   },
   container: {
     borderTopRightRadius: 15,
     borderTopLeftRadius: 15,
     overflow: 'hidden',
-    backgroundColor: 'white',
-    marginTop: 3,
   },
   imageContainer: {
     height: Dimensions.get('screen').height / 3.2,
@@ -134,7 +140,7 @@ const styles = StyleSheet.create({
     paddingVertical: '10%',
     paddingHorizontal: '7%',
     borderBottomWidth: 1,
-    borderBottomColor: '#999999',
+    borderBottomColor: ' rgba(153, 153, 153, 0.2)',
   },
   headingRow: {
     flexDirection: 'row',

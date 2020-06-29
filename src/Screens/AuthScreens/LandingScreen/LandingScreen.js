@@ -68,14 +68,12 @@ const styles = StyleSheet.create({
     marginTop: 0,
     marginHorizontal: 0,
     height: Dimensions.get('window').height / 1.5,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   backgroundImage: {
-    position: 'absolute',
-    bottom: '30%',
-    left: 40,
     width: 300,
     height: 300,
-    opacity: 1,
   },
   content: {
     flex: 1,

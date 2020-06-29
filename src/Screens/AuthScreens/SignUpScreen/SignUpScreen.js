@@ -9,7 +9,7 @@ import {
   TouchableWithoutFeedback,
   StatusBar,
 } from 'react-native';
-
+import MailIcon from 'react-native-vector-icons/Feather';
 import UserIcon from 'react-native-vector-icons/FontAwesome';
 import PasswordIcon from 'react-native-vector-icons/SimpleLineIcons';
 import BackIcon from 'react-native-vector-icons/Ionicons';
@@ -69,7 +69,7 @@ const SignUpScreen = ({navigation}) => {
             />
           </View>
           <View style={styles.inputContainer}>
-            <UserIcon name="user-o" size={18} style={styles.inputLogo} />
+            <MailIcon name="mail" size={18} style={styles.inputLogo} />
             <TextInput
               value={email}
               placeholder="Email address or Username"

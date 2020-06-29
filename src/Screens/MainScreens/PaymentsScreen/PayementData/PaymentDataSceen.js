@@ -7,20 +7,43 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
   TextInput,
+  Switch,
 } from 'react-native';
 import {Icon} from 'react-native-elements';
 import Colors from '../../../../constants/Colors';
 import LinearGradient from 'react-native-linear-gradient';
+import MonthPicker from 'react-native-month-year-picker';
 
 const paymentMehods = ['Paypal', 'Wallet', 'Credit', 'Debit'];
 
 const PaymentDataSceen = ({navigation}) => {
-  const [currentPaymentMethod, setcurrentPaymentMethod] = useState('');
+  const today = new Date();
+  const [currentPaymentMethod, setcurrentPaymentMethod] = useState(
+    paymentMehods[1],
+  );
   const [cardInput, setCardInput] = useState();
-  const [month, setMonth] = useState();
-  const [year, setYear] = useState();
+  const [month, setMonth] = useState('Month');
+  const [year, setYear] = useState('Year');
   const [cvv, setCvv] = useState();
   const [cardHolderName, setcardHolderName] = useState('');
+  const [isEnabled, setIsEnabled] = useState(false);
+  const [showDatePicker, setShowDatePicker] = useState(false);
+
+  const showPicker = value => setShowDatePicker(value);
+
+  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+
+  const onDateValueChange = (event, newDate) => {
+    if (event === 'dismissedAction') {
+      return showPicker(false);
+    }
+    const selectedDate = newDate || today;
+    const monthAndYear = selectedDate.split('-');
+    showPicker(false);
+    setMonth(monthAndYear[0]);
+    setYear(monthAndYear[1]);
+  };
+
   useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: true,
@@ -32,16 +55,26 @@ const PaymentDataSceen = ({navigation}) => {
   const rendeBadge = badgeName => (
     <>
       {badgeName === currentPaymentMethod ? (
-        <View style={styles.currentbadges}>
+        <LinearGradient
+          style={styles.currentbadges}
+          start={{x: 0, y: 0}}
+          end={{x: 1, y: 0}}
+          colors={[Colors.secondaryGradient, Colors.primaryGradient]}>
           <View style={styles.badgeSelectedContainer}>
             <Text style={styles.badgeSelectedText}>{badgeName}</Text>
             <Icon type="antdesign" name="checkcircleo" color="white" />
           </View>
-        </View>
+        </LinearGradient>
       ) : (
         <View style={styles.badges}>
           <View style={styles.badgeContainer}>
             <Text style={styles.badgeText}>{badgeName}</Text>
+
+            <Icon
+              type="antdesign"
+              name="checkcircleo"
+              color={'rgba(153, 153, 153, 0.2)'}
+            />
           </View>
         </View>
       )}
@@ -49,6 +82,14 @@ const PaymentDataSceen = ({navigation}) => {
   );
   return (
     <View style={styles.screen}>
+      {showDatePicker && (
+        <MonthPicker
+          onChange={onDateValueChange}
+          value={today}
+          minimumDate={today}
+          maximumDate={new Date(2025, 5)}
+        />
+      )}
       <View style={styles.container}>
         <View>
           <Text style={styles.amountText}>Total Amount</Text>
@@ -102,22 +143,17 @@ const PaymentDataSceen = ({navigation}) => {
             <View style={styles.validContainer}>
               <Text style={styles.cardText}>Valid until</Text>
               <View style={styles.validInputContainer}>
-                <View style={styles.form}>
-                  <TextInput
-                    value={month}
-                    style={styles.validInput}
-                    onChangeText={value => setMonth(value)}
-                    placeholder="Month"
-                  />
-                </View>
-                <View style={styles.form}>
-                  <TextInput
-                    value={year}
-                    style={styles.validInput}
-                    onChangeText={value => setYear(value)}
-                    placeholder="Year"
-                  />
-                </View>
+                <Text
+                  style={styles.validInput}
+                  onPress={() => showPicker(true)}>
+                  {month}
+                </Text>
+
+                <Text
+                  style={styles.validInput}
+                  onPress={() => showPicker(true)}>
+                  {year}
+                </Text>
               </View>
             </View>
             <View style={styles.validContainer}>
@@ -145,6 +181,13 @@ const PaymentDataSceen = ({navigation}) => {
             <Text style={styles.cardText}>
               Save card data for future payments
             </Text>
+            <Switch
+              trackColor={{false: '#E5E5E5', true: '#E5E5E5'}}
+              thumbColor={isEnabled ? Colors.secondaryGradient : '#f4f3f4'}
+              ios_backgroundColor="#E5E5E5"
+              onValueChange={toggleSwitch}
+              value={isEnabled}
+            />
           </View>
         </View>
       </View>
@@ -168,6 +211,15 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     backgroundColor: 'white',
+    borderTopStartRadius: 15,
+    borderTopEndRadius: 15,
+    paddingTop: 6,
+    elevation: 6,
+    shadowColor: '#999999',
+    shadowOffset: {width: 0, height: 2},
+    shadowOpacity: 0.4,
+    shadowRadius: 6,
+    overflow: 'hidden',
   },
   container: {
     paddingVertical: '10%',
@@ -191,28 +243,25 @@ const styles = StyleSheet.create({
   },
   badgeContainer: {
     flexDirection: 'row',
-    marginTop: '4%',
+    alignItems: 'center',
   },
   badgeSelectedContainer: {
     flexDirection: 'row',
-    marginTop: '4%',
     alignItems: 'center',
-    justifyContent: 'center',
   },
   badges: {
     width: 109,
-    height: 44,
+    height: 50,
     backgroundColor: '#FAFAFA',
-    borderRadius: 12,
+    borderRadius: 29,
     justifyContent: 'center',
     alignItems: 'center',
     marginHorizontal: 10,
   },
   currentbadges: {
-    width: 109,
-    height: 44,
-    backgroundColor: Colors.secondaryGradient,
-    borderRadius: 12,
+    width: 120,
+    height: 50,
+    borderRadius: 29,
     justifyContent: 'center',
     alignItems: 'center',
     marginHorizontal: 10,
@@ -223,11 +272,13 @@ const styles = StyleSheet.create({
     lineHeight: 18,
     marginRight: 10,
     color: 'white',
+    textAlign: 'center',
   },
   badgeText: {
     fontSize: 12,
     lineHeight: 18,
     marginRight: 10,
+    color: '#999999',
   },
   badgeView: {
     flexDirection: 'row',
@@ -244,40 +295,50 @@ const styles = StyleSheet.create({
   },
   input: {
     borderBottomWidth: 1,
-    borderBottomColor: '#999999',
+    borderBottomColor: 'rgba(153, 153, 153, 0.2)',
     width: '24%',
-    fontSize: 24,
-    paddingLeft: '5%',
+    fontSize: 21,
+    lineHeight: 30,
+    letterSpacing: 5,
+    textAlign: 'center',
     color: '#999999',
   },
   restInput: {
     marginLeft: 5,
   },
-  validInputContainer: {flexDirection: 'row'},
+  validInputContainer: {
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+    marginRight: 10,
+    marginTop: 10,
+  },
   validContainer: {
     marginTop: '5%',
   },
   validInput: {
-    fontSize: 12,
+    width: 60,
+    fontSize: 14,
     lineHeight: 18,
     color: '#999999',
     borderBottomWidth: 1,
-    borderBottomColor: '#999999',
-    marginLeft: '10%',
+    borderBottomColor: 'rgba(153, 153, 153, 0.2)',
+    marginHorizontal: 10,
+    paddingVertical: 10,
   },
   cvvInput: {
     borderBottomWidth: 1,
-    borderBottomColor: '#999999',
-    fontSize: 10,
+    borderBottomColor: 'rgba(153, 153, 153, 0.2)',
+    fontSize: 20,
     width: '120%',
     color: '#999999',
+    textAlign: 'center',
   },
   cardMoreDetails: {
     flexDirection: 'row',
   },
   cardHolderInput: {
     borderBottomWidth: 1,
-    borderBottomColor: '#999999',
+    borderBottomColor: 'rgba(153, 153, 153, 0.2)',
     fontSize: 12,
     lineHeight: 18,
     width: '100%',
@@ -285,6 +346,9 @@ const styles = StyleSheet.create({
   },
   saveCard: {
     marginTop: '10%',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   gradient: {
     width: '90%',
@@ -304,7 +368,6 @@ const styles = StyleSheet.create({
   buttonContainer: {
     alignSelf: 'center',
     width: '100%',
-    elevation: 6,
     left: 0,
     right: 0,
     flexDirection: 'row',

@@ -72,7 +72,7 @@ const TermScreen = ({navigation}) => {
           </View>
           <TouchableWithoutFeedback
             disabled={!termCheck}
-            onPress={() => navigation.navigate('Dashboard')}>
+            onPress={() => navigation.navigate('FoodDetail')}>
             <LinearGradient
               start={{x: 0, y: 0}}
               end={{x: 1, y: 0}}
