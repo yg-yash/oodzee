@@ -1,6 +1,14 @@
 import React, {useLayoutEffect} from 'react';
-import {StyleSheet, View, Text, FlatList, TouchableOpacity} from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  FlatList,
+  TouchableOpacity,
+  TouchableHighlight,
+} from 'react-native';
 import {Card} from 'react-native-elements';
+import Colors from '../../../../constants/Colors';
 
 const orderList = [
   {
@@ -76,51 +84,55 @@ const Orders = ({navigation}) => {
   }, [navigation]);
 
   const renderOrderItem = item => (
-    <View style={styles.orderCardContainer}>
-      <View style={styles.leftContainer}>
-        <Text style={styles.itemDate}>{item.date}</Text>
-        <View style={styles.horizontalLine} />
-        <Text style={styles.itemDay}>{item.day}</Text>
-      </View>
-      <View style={styles.rightContainer}>
-        <Card
-          containerStyle={styles.item}
-          image={item.image}
-          imageProps={{resizeMode: 'cover'}}
-          imageStyle={styles.image}
-          imageWrapperStyle={styles.imageContainer}
-        />
-        <View style={{flex: 1}}>
-          <View style={styles.titleTextContainer}>
-            <Text style={styles.titleText}>{item.title}</Text>
-            <View>
-              <TouchableOpacity>
-                <Text style={styles.trackText}>
-                  {item.delivered ? '' : 'Track order'}
+    <TouchableHighlight
+      underlayColor={Colors.underlaylightColor}
+      onPress={() => navigation.navigate('OrderDetails')}>
+      <View style={styles.orderCardContainer}>
+        <View style={styles.leftContainer}>
+          <Text style={styles.itemDate}>{item.date}</Text>
+          <View style={styles.horizontalLine} />
+          <Text style={styles.itemDay}>{item.day}</Text>
+        </View>
+        <View style={styles.rightContainer}>
+          <Card
+            containerStyle={styles.item}
+            image={item.image}
+            imageProps={{resizeMode: 'cover'}}
+            imageStyle={styles.image}
+            imageWrapperStyle={styles.imageContainer}
+          />
+          <View style={{flex: 1}}>
+            <View style={styles.titleTextContainer}>
+              <Text style={styles.titleText}>{item.title}</Text>
+              <View>
+                <TouchableOpacity>
+                  <Text style={styles.trackText}>
+                    {item.delivered ? '' : 'Track order'}
+                  </Text>
+                </TouchableOpacity>
+                <Text
+                  style={[
+                    styles.orderStatusText,
+                    {backgroundColor: item.delivered ? '#21923A' : '#F0C222'},
+                  ]}>
+                  {item.delivered ? 'Delivered' : 'In Progress'}
                 </Text>
-              </TouchableOpacity>
-              <Text
-                style={[
-                  styles.orderStatusText,
-                  {backgroundColor: item.delivered ? '#21923A' : '#F0C222'},
-                ]}>
-                {item.delivered ? 'Delivered' : 'In Progress'}
+              </View>
+            </View>
+            <Text style={styles.subTitle}>{item.subTitle}</Text>
+            <View style={styles.productsDetails}>
+              <Text style={[styles.detailsText, {marginRight: 5}]}>
+                Quantity: {item.quantity}
+              </Text>
+              <View style={styles.smallLine} />
+              <Text style={[styles.detailsText, {marginLeft: 5}]}>
+                Total Price: ₹{item.totalPrice}
               </Text>
             </View>
           </View>
-          <Text style={styles.subTitle}>{item.subTitle}</Text>
-          <View style={styles.productsDetails}>
-            <Text style={[styles.detailsText, {marginRight: 5}]}>
-              Quantity: {item.quantity}
-            </Text>
-            <View style={styles.smallLine} />
-            <Text style={[styles.detailsText, {marginLeft: 5}]}>
-              Total Price: ₹{item.totalPrice}
-            </Text>
-          </View>
         </View>
       </View>
-    </View>
+    </TouchableHighlight>
   );
 
   const renderOrderList = item => (

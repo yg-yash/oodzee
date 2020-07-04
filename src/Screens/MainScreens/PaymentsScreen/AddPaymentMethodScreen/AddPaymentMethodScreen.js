@@ -17,7 +17,7 @@ const PaymentScreen = ({navigation}) => {
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View style={styles.screen}>
-        <StatusBar backgroundColor={Colors.secondaryGradient} />
+        <StatusBar backgroundColor={Colors.primaryGradient} />
         <View style={styles.logoContainer}>
           <View style={styles.backButtonContainer}>
             <Button
@@ -56,9 +56,9 @@ const PaymentScreen = ({navigation}) => {
           <TouchableWithoutFeedback
             onPress={() => navigation.navigate('Terms')}>
             <LinearGradient
-              start={{x: 0, y: 0}}
+              start={{x: 0.5, y: 0.5}}
               end={{x: 1, y: 0}}
-              colors={[Colors.secondaryGradient, Colors.primaryGradient]}
+              colors={[Colors.primaryGradient, Colors.secondaryGradient]}
               style={styles.gradient}>
               <Text style={styles.btnText}>Add New Payment Method </Text>
             </LinearGradient>

@@ -57,9 +57,9 @@ const PaymentDataSceen = ({navigation}) => {
       {badgeName === currentPaymentMethod ? (
         <LinearGradient
           style={styles.currentbadges}
-          start={{x: 0, y: 0}}
+          start={{x: 0.5, y: 0.5}}
           end={{x: 1, y: 0}}
-          colors={[Colors.secondaryGradient, Colors.primaryGradient]}>
+          colors={[Colors.primaryGradient, Colors.secondaryGradient]}>
           <View style={styles.badgeSelectedContainer}>
             <Text style={styles.badgeSelectedText}>{badgeName}</Text>
             <Icon type="antdesign" name="checkcircleo" color="white" />
@@ -183,7 +183,7 @@ const PaymentDataSceen = ({navigation}) => {
             </Text>
             <Switch
               trackColor={{false: '#E5E5E5', true: '#E5E5E5'}}
-              thumbColor={isEnabled ? Colors.secondaryGradient : '#f4f3f4'}
+              thumbColor={isEnabled ? Colors.primaryGradient : '#f4f3f4'}
               ios_backgroundColor="#E5E5E5"
               onValueChange={toggleSwitch}
               value={isEnabled}
@@ -195,9 +195,9 @@ const PaymentDataSceen = ({navigation}) => {
         <TouchableWithoutFeedback
           onPress={() => navigation.navigate('Payment')}>
           <LinearGradient
-            start={{x: 0, y: 0}}
+            start={{x: 0.5, y: 0.5}}
             end={{x: 1, y: 0}}
-            colors={[Colors.secondaryGradient, Colors.primaryGradient]}
+            colors={[Colors.primaryGradient, Colors.secondaryGradient]}
             style={styles.gradient}>
             <Text style={styles.btnText}>Proceed to confirm</Text>
           </LinearGradient>
@@ -352,7 +352,7 @@ const styles = StyleSheet.create({
   },
   gradient: {
     width: '90%',
-    height: 60,
+    height: 44,
     borderRadius: 50,
     justifyContent: 'center',
     alignItems: 'center',
@@ -372,7 +372,7 @@ const styles = StyleSheet.create({
     right: 0,
     flexDirection: 'row',
     position: 'absolute',
-    bottom: 10,
+    bottom: 15,
     marginHorizontal: 20,
   },
 });

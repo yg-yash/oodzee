@@ -87,9 +87,9 @@ const FoodDetail = ({navigation}) => {
         <TouchableWithoutFeedback
           onPress={() => navigation.navigate('PaymentData')}>
           <LinearGradient
-            start={{x: 0, y: 0}}
+            start={{x: 0.5, y: 0.5}}
             end={{x: 1, y: 0}}
-            colors={[Colors.secondaryGradient, Colors.primaryGradient]}
+            colors={[Colors.primaryGradient, Colors.secondaryGradient]}
             style={styles.gradient}>
             <View style={{flexDirection: 'row'}}>
               <Icon
@@ -181,7 +181,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     width: '10%',
     borderRadius: 5,
-    borderColor: Colors.secondaryGradient,
+    borderColor: Colors.primaryGradient,
     marginBottom: '2%',
   },
   firstRow: {
@@ -196,12 +196,12 @@ const styles = StyleSheet.create({
     right: 0,
     flexDirection: 'row',
     position: 'absolute',
-    bottom: 10,
+    bottom: 15,
     marginHorizontal: 20,
   },
   gradient: {
     width: '90%',
-    height: 50,
+    height: 44,
     borderRadius: 50,
     justifyContent: 'center',
     alignItems: 'center',

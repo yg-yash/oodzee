@@ -30,7 +30,7 @@ const friends = [
   },
 ];
 
-const InviteFriends = ({navigation}) => {
+const InviteFriendsScreen = ({navigation}) => {
   useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: true,
@@ -68,9 +68,9 @@ const InviteFriends = ({navigation}) => {
           <TouchableWithoutFeedback
             onPress={() => navigation.navigate('Payment')}>
             <LinearGradient
-              start={{x: 0, y: 0}}
+              start={{x: 0.5, y: 0.5}}
               end={{x: 1, y: 0}}
-              colors={[Colors.secondaryGradient, Colors.primaryGradient]}
+              colors={[Colors.primaryGradient, Colors.secondaryGradient]}
               style={styles.gradient}>
               <Text style={styles.btnText}>Share with your friend !</Text>
             </LinearGradient>
@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   gradient: {
-    height: 50,
+    height: 44,
     borderRadius: 50,
     justifyContent: 'center',
     alignItems: 'center',
@@ -173,4 +173,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default InviteFriends;
+export default InviteFriendsScreen;

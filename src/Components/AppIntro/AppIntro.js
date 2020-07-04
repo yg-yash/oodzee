@@ -35,8 +35,8 @@ export default ({setShowRealApp}) => {
   const _renderItem = ({item}) => {
     return (
       <LinearGradient
-        start={{x: 1, y: 0}}
-        end={{x: 0, y: 1}}
+        start={{x: 0, y: 0.6}}
+        end={{x: 0, y: 0}}
         colors={[Colors.primaryGradient, Colors.secondaryGradient]}
         style={styles.linearGradient}>
         <View style={styles.slide}>
@@ -95,7 +95,11 @@ export default ({setShowRealApp}) => {
 
   return (
     <>
-      <StatusBar backgroundColor={Colors.primaryGradient} />
+      {/* <StatusBar backgroundColor={Colors.primaryGradient} /> */}
+      <LinearGradient
+        colors={[Colors.primaryGradient, Colors.secondaryGradient]}>
+        <StatusBar translucent={true} backgroundColor={'transparent'} />
+      </LinearGradient>
       <AppIntroSlider
         data={slides}
         renderItem={_renderItem}
@@ -133,9 +137,10 @@ var styles = StyleSheet.create({
   },
   text: {
     color: 'white',
-    marginTop: 5,
+    marginTop: 10,
     fontSize: 14,
     lineHeight: 18,
+    textAlign: 'center',
   },
   nextButton: {
     color: 'white',
@@ -172,9 +177,10 @@ var styles = StyleSheet.create({
     justifyContent: 'center',
   },
   pagination: {
-    borderColor: 'white',
     width: 35,
-    borderWidth: 2,
+    height: 4,
+    backgroundColor: 'white',
+    borderRadius: 3,
     marginHorizontal: 5,
   },
   start: {

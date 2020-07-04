@@ -67,9 +67,9 @@ const UserMenu = ({navigation}) => {
   return (
     <>
       <LinearGradient
-        start={{x: 0, y: 0}}
-        end={{x: 1, y: 0}}
-        colors={[Colors.secondaryGradient, Colors.primaryGradient]}
+        start={{x: 0.4, y: 0}}
+        end={{x: 1, y: 0.1}}
+        colors={[Colors.primaryGradient, Colors.secondaryGradient]}
         style={styles.screen}>
         <View style={styles.iconsContainer}>
           <View style={styles.leftIcon}>
@@ -86,7 +86,7 @@ const UserMenu = ({navigation}) => {
               name="close"
               color="white"
               size={25}
-              onPress={() => navigation.navigate('FoodDetail')}
+              onPress={() => navigation.goBack()}
             />
           </View>
         </View>
@@ -109,13 +109,20 @@ const styles = StyleSheet.create({
     paddingTop: '5%',
   },
   card: {
-    flex: 1,
     marginTop: 20,
     marginHorizontal: 0,
     padding: 0,
-    borderTopLeftRadius: 15,
-    borderTopRightRadius: 15,
     justifyContent: 'flex-start',
+    flex: 1,
+    backgroundColor: 'white',
+    borderTopStartRadius: 25,
+    borderTopEndRadius: 25,
+    elevation: 6,
+    shadowColor: '#999999',
+    shadowOffset: {width: 0, height: 2},
+    shadowOpacity: 0.4,
+    shadowRadius: 6,
+    overflow: 'hidden',
   },
   iconsContainer: {
     flexDirection: 'row',
@@ -209,7 +216,7 @@ const styles = StyleSheet.create({
   termText: {
     fontSize: 12,
     lineHeight: 18,
-    color: Colors.secondaryGradient,
+    color: Colors.primaryGradient,
   },
 });
 export default UserMenu;

@@ -1,7 +1,12 @@
 import React, {useLayoutEffect} from 'react';
-import {StyleSheet, Text, View, TouchableWithoutFeedback} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  TouchableWithoutFeedback,
+} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import AddIcon from 'react-native-vector-icons/Ionicons';
 import Colors from '../../../constants/Colors';
 
 const AddCreditsScreen = ({navigation}) => {
@@ -14,16 +19,27 @@ const AddCreditsScreen = ({navigation}) => {
   return (
     <View style={styles.screen}>
       <LinearGradient
+        start={{x: 0.5, y: 0.5}}
+        end={{x: 1, y: 0}}
         colors={[Colors.primaryGradient, Colors.secondaryGradient]}
         style={styles.linearGradient}>
         <View style={styles.mainContent}>
-          <AddIcon name="ios-add-circle-outline" size={50} color="white" />
-          <Text style={styles.thankText}>Add More Credits</Text>
+          <Text style={styles.addMore}>Add more credits !</Text>
           <Text style={styles.smallText}>
-            OODZEE credits can be used for purchasing food {'\n'}in the app. f
-            you have a campaign code, tap + above{'\n'} and either it to redeem
-            your credits.
+            Type a campaign to add credits to your account.{'\n'}Please note
+            that the codes have special conditions and{'\n'} may only be
+            redeemable once.
           </Text>
+          <TextInput
+            style={styles.input}
+            placeholderTextColor="white"
+            placeholder="Enter your code"
+          />
+          <TouchableWithoutFeedback>
+            <View style={styles.buttonContainer}>
+              <Text style={styles.btnText}>redeem now</Text>
+            </View>
+          </TouchableWithoutFeedback>
         </View>
       </LinearGradient>
     </View>
@@ -51,36 +67,37 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   mainContent: {
-    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    marginTop: 70,
   },
-  placeText: {
-    color: '#ffffff',
-    lineHeight: 45,
-    fontSize: 30,
-    textAlign: 'center',
-    fontFamily: 'Poppins',
-  },
-  bottomContent: {
-    alignItems: 'center',
-    bottom: 30,
-    justifyContent: 'center',
-  },
-  thankText: {
-    color: '#ffffff',
-    lineHeight: 21,
+  addMore: {
     fontSize: 14,
+    lineHeight: 21,
     textAlign: 'center',
-    fontFamily: 'Poppins',
     letterSpacing: 2,
     textTransform: 'uppercase',
-    bottom: 20,
-    marginTop: 30,
+    color: 'white',
     fontWeight: 'bold',
   },
-  gradient: {
-    width: 310,
+  smallText: {
+    fontSize: 12,
+    lineHeight: 18,
+    textAlign: 'center',
+    color: 'white',
+    marginTop: 20,
+  },
+  input: {
+    marginTop: 70,
+    width: 227,
+    height: 50,
+    borderBottomColor: 'white',
+    borderBottomWidth: 1,
+    color: 'white',
+  },
+  buttonContainer: {
+    marginTop: 30,
+    width: 186,
     height: 44,
     borderRadius: 50,
     backgroundColor: 'white',
@@ -88,19 +105,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   btnText: {
-    color: Colors.secondaryGradient,
+    color: Colors.primaryGradient,
     textAlign: 'center',
     fontSize: 14,
     lineHeight: 21,
+    fontWeight: 'bold',
     letterSpacing: 2,
     textTransform: 'uppercase',
     fontFamily: 'Poppins',
-  },
-  smallText: {
-    fontSize: 12,
-    lineHeight: 18,
-    textAlign: 'center',
-    color: 'white',
+    shadowColor: 'rgba(0, 0, 0, 0.1)',
+    shadowOpacity: 0.8,
+    elevation: 6,
+    shadowRadius: 15,
+    shadowOffset: {width: 1, height: 13},
   },
 });
 

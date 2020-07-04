@@ -87,9 +87,9 @@ const FilterLogin = ({navigation}) => {
             <TouchableWithoutFeedback
               onPress={() => navigation.navigate('App')}>
               <LinearGradient
-                start={{x: 0, y: 0}}
+                start={{x: 0.5, y: 0.5}}
                 end={{x: 1, y: 0}}
-                colors={[Colors.secondaryGradient, Colors.primaryGradient]}
+                colors={[Colors.primaryGradient, Colors.secondaryGradient]}
                 style={styles.gradient}>
                 <Text style={styles.btnText}>LOGIN</Text>
               </LinearGradient>
@@ -171,14 +171,6 @@ const styles = StyleSheet.create({
     top: 0,
   },
   passwordIcon: {marginRight: 10},
-  joinBtn: {
-    marginTop: 30,
-    textAlign: 'center',
-    width: '100%',
-    height: 50,
-    borderRadius: 20,
-    borderWidth: 2,
-  },
   btnText: {
     color: 'white',
     fontSize: 14,
@@ -201,7 +193,7 @@ const styles = StyleSheet.create({
   gradient: {
     marginTop: 20,
     width: '100%',
-    height: 50,
+    height: 44,
     borderRadius: 50,
     justifyContent: 'center',
     alignItems: 'center',
@@ -219,7 +211,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins-Regular',
   },
   signUpBtn: {
-    color: Colors.secondaryGradient,
+    color: Colors.primaryGradient,
     fontWeight: '400',
     fontSize: 14,
     lineHeight: 18,
@@ -238,7 +230,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   pinkText: {
-    color: Colors.secondaryGradient,
+    color: Colors.primaryGradient,
   },
 });
 

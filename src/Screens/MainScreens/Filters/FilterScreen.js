@@ -17,7 +17,7 @@ const filterList = [
   'Only show surplus',
 ];
 
-const FiltersScreen = ({navigation}) => {
+const FilterScreen = ({navigation}) => {
   const [isEnabled, setIsEnabled] = useState(false);
 
   useLayoutEffect(() => {
@@ -34,14 +34,14 @@ const FiltersScreen = ({navigation}) => {
         <Text
           style={[
             styles.itemText,
-            {color: isEnabled ? Colors.secondaryGradient : 'black'},
+            {color: isEnabled ? Colors.primaryGradient : 'black'},
           ]}>
           {item}
         </Text>
         <Switch
           value={isEnabled}
           trackColor={{false: '#E5E5E5', true: '#E5E5E5'}}
-          thumbColor={isEnabled ? Colors.secondaryGradient : '#f4f3f4'}
+          thumbColor={isEnabled ? Colors.primaryGradient : '#f4f3f4'}
           ios_backgroundColor="#E5E5E5"
           onValueChange={toggleSwitch}
         />
@@ -51,14 +51,14 @@ const FiltersScreen = ({navigation}) => {
         <Text
           style={[
             styles.itemText,
-            {color: isEnabled ? Colors.secondaryGradient : 'black'},
+            {color: isEnabled ? Colors.primaryGradient : 'black'},
           ]}>
           {item}
         </Text>
         <Switch
           value={isEnabled}
           trackColor={{false: '#E5E5E5', true: '#E5E5E5'}}
-          thumbColor={isEnabled ? Colors.secondaryGradient : '#f4f3f4'}
+          thumbColor={isEnabled ? Colors.primaryGradient : '#f4f3f4'}
           ios_backgroundColor="#E5E5E5"
           onValueChange={toggleSwitch}
         />
@@ -79,8 +79,8 @@ const FiltersScreen = ({navigation}) => {
         <TouchableOpacity onPress={() => setIsEnabled(false)}>
           <Text style={styles.button}>Reset</Text>
         </TouchableOpacity>
-        <TouchableOpacity>
-          <Text style={[styles.button, {color: Colors.secondaryGradient}]}>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Text style={[styles.button, {color: Colors.primaryGradient}]}>
             Save {'&'} Continue
           </Text>
         </TouchableOpacity>
@@ -144,4 +144,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default FiltersScreen;
+export default FilterScreen;

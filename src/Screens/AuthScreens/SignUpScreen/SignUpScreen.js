@@ -28,7 +28,7 @@ const SignUpScreen = ({navigation}) => {
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View style={styles.screen}>
-        <StatusBar backgroundColor={Colors.secondaryGradient} />
+        <StatusBar backgroundColor={Colors.primaryGradient} />
         <View style={styles.logoContainer}>
           <View style={styles.backButtonContainer}>
             <Button
@@ -109,7 +109,7 @@ const SignUpScreen = ({navigation}) => {
           <View style={styles.termCheckContainer}>
             <CheckBox
               checked={termCheck}
-              checkedColor={Colors.secondaryGradient}
+              checkedColor={Colors.primaryGradient}
               onPress={() => setTermCheck(value => !value)}
             />
             <Text style={{alignSelf: 'center'}}>
@@ -117,9 +117,9 @@ const SignUpScreen = ({navigation}) => {
             </Text>
           </View>
           <LinearGradient
-            start={{x: 0, y: 1}}
+            start={{x: 0.4, y: 0.4}}
             end={{x: 1, y: 0}}
-            colors={[Colors.secondaryGradient, Colors.primaryGradient]}
+            colors={[Colors.primaryGradient, Colors.secondaryGradient]}
             style={styles.gradient}>
             <Text style={styles.btnText}>JOIN US !</Text>
           </LinearGradient>
@@ -189,8 +189,8 @@ const styles = StyleSheet.create({
     marginVertical: '10%',
   },
   gradient: {
-    width: '90%',
-    height: '10%',
+    width: '100%',
+    height: 44,
     borderRadius: 50,
     justifyContent: 'center',
     alignItems: 'center',
@@ -198,6 +198,7 @@ const styles = StyleSheet.create({
   form: {
     flex: 2,
     alignItems: 'center',
+    marginHorizontal: 20,
   },
   inputContainer: {
     flexDirection: 'row',
@@ -205,16 +206,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#FAFAFA',
     borderRadius: 21,
-    width: '89%',
     marginVertical: 10,
   },
   inputLogo: {
-    marginLeft: '10%',
+    marginLeft: 15,
     color: '#999999',
   },
   input: {
     marginLeft: '5%',
     color: '#999999',
+    flex: 1,
   },
   signInText: {
     fontSize: 18,
@@ -222,14 +223,6 @@ const styles = StyleSheet.create({
     top: 0,
   },
   passwordIcon: {marginRight: 10},
-  joinBtn: {
-    marginTop: 30,
-    textAlign: 'center',
-    width: '100%',
-    height: 50,
-    borderRadius: 20,
-    borderWidth: 2,
-  },
   titleStyle: {
     textAlign: 'center',
     color: 'white',
@@ -300,7 +293,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins-Regular',
   },
   signUpBtn: {
-    color: Colors.secondaryGradient,
+    color: Colors.primaryGradient,
     fontWeight: '400',
     fontSize: 14,
     lineHeight: 18,

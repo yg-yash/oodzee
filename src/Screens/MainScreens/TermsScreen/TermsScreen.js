@@ -18,7 +18,7 @@ const TermScreen = ({navigation}) => {
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View style={styles.screen}>
-        <StatusBar backgroundColor={Colors.secondaryGradient} />
+        <StatusBar backgroundColor={Colors.primaryGradient} />
         <View style={styles.logoContainer}>
           <View style={styles.backButtonContainer}>
             <Button
@@ -54,7 +54,7 @@ const TermScreen = ({navigation}) => {
           <View style={styles.termCheckContainer}>
             <CheckBox
               checked={termCheck}
-              checkedColor={Colors.secondaryGradient}
+              checkedColor={Colors.primaryGradient}
               onPress={() => setTermCheck(value => !value)}
             />
             <View style={{flexDirection: 'row', flexWrap: 'wrap'}}>
@@ -72,11 +72,11 @@ const TermScreen = ({navigation}) => {
           </View>
           <TouchableWithoutFeedback
             disabled={!termCheck}
-            onPress={() => navigation.navigate('FoodDetail')}>
+            onPress={() => navigation.navigate('Dashboard')}>
             <LinearGradient
-              start={{x: 0, y: 0}}
+              start={{x: 0.5, y: 0.5}}
               end={{x: 1, y: 0}}
-              colors={[Colors.secondaryGradient, Colors.primaryGradient]}
+              colors={[Colors.primaryGradient, Colors.secondaryGradient]}
               style={styles.gradient}>
               <Text style={styles.btnText}>Approve</Text>
             </LinearGradient>
@@ -150,7 +150,7 @@ const styles = StyleSheet.create({
   },
   gradient: {
     width: '90%',
-    height: '10%',
+    height: 44,
     borderRadius: 50,
     justifyContent: 'center',
     alignItems: 'center',
@@ -165,7 +165,7 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
   },
   gradientText: {
-    color: Colors.secondaryGradient,
+    color: Colors.primaryGradient,
   },
 });
 

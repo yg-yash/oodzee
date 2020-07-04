@@ -20,7 +20,7 @@ const ForgetPasswordScreen = ({navigation}) => {
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View style={styles.screen}>
-        <StatusBar backgroundColor={Colors.secondaryGradient} />
+        <StatusBar backgroundColor={Colors.primaryGradient} />
         <View style={styles.logoContainer}>
           <View style={styles.backButtonContainer}>
             <Button
@@ -64,9 +64,9 @@ const ForgetPasswordScreen = ({navigation}) => {
           </View>
 
           <LinearGradient
-            start={{x: 0, y: 1}}
+            start={{x: 0.5, y: 0.5}}
             end={{x: 1, y: 0}}
-            colors={[Colors.secondaryGradient, Colors.primaryGradient]}
+            colors={[Colors.primaryGradient, Colors.secondaryGradient]}
             style={styles.gradient}>
             <Text style={styles.btnText}>SEND AN EMAIL </Text>
           </LinearGradient>
@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
   },
   gradient: {
     width: '90%',
-    height: '10%',
+    height: 44,
     borderRadius: 50,
     justifyContent: 'center',
     alignItems: 'center',
@@ -150,14 +150,7 @@ const styles = StyleSheet.create({
     top: 0,
   },
   passwordIcon: {marginRight: 10},
-  joinBtn: {
-    marginTop: 30,
-    textAlign: 'center',
-    width: '100%',
-    height: 50,
-    borderRadius: 20,
-    borderWidth: 2,
-  },
+
   titleStyle: {
     textAlign: 'center',
     color: 'white',
@@ -228,7 +221,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins-Regular',
   },
   signUpBtn: {
-    color: Colors.secondaryGradient,
+    color: Colors.primaryGradient,
     fontWeight: '400',
     fontSize: 14,
     lineHeight: 18,

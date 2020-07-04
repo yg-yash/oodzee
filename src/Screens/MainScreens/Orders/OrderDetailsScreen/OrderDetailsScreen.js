@@ -2,8 +2,7 @@ import React, {useLayoutEffect, useState} from 'react';
 import {StyleSheet, View, Text, Image} from 'react-native';
 import {Icon} from 'react-native-elements';
 
-const OrderSummaryScreen = ({navigation}) => {
-  const [isEnabled, setIsEnabled] = useState(false);
+const OrderDetailsScreen = ({navigation}) => {
   const [like, setLike] = useState(false);
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -281,4 +280,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default OrderSummaryScreen;
+export default OrderDetailsScreen;

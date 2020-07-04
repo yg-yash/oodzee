@@ -6,6 +6,7 @@ import {
   Image,
   Text,
   StatusBar,
+  TouchableWithoutFeedback,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Colors from '../../../constants/Colors';
@@ -16,8 +17,8 @@ export default function LandingScreen({navigation}) {
     <View style={styles.screen}>
       <StatusBar backgroundColor={Colors.primaryGradient} />
       <LinearGradient
-        start={{x: 1, y: 0}}
-        end={{x: 0, y: 1}}
+        start={{x: 0, y: 0.4}}
+        end={{x: 0.2, y: 0}}
         colors={[Colors.primaryGradient, Colors.secondaryGradient]}
         style={styles.linearGradient}>
         <View style={styles.card}>
@@ -32,13 +33,12 @@ export default function LandingScreen({navigation}) {
           Part of the secret of success in life is to eat what you want to like
           and let the food fight it out inside
         </Text>
-        <Button
-          buttonStyle={styles.joinBtn}
-          titleStyle={styles.titleStyle}
-          title="JOIN US !"
-          type="outline"
-          onPress={() => navigation.navigate('SignUp')}
-        />
+
+        <TouchableWithoutFeedback onPress={() => navigation.navigate('SignUp')}>
+          <View style={styles.joinBtn}>
+            <Text style={styles.titleStyle}>Join Us !</Text>
+          </View>
+        </TouchableWithoutFeedback>
         <View style={styles.signUp}>
           <Text style={styles.joinText}>Already Joined?</Text>
           <Button
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
   card: {
     marginTop: 0,
     marginHorizontal: 0,
-    height: Dimensions.get('window').height / 1.5,
+    height: Dimensions.get('window').height / 1.4,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -82,15 +82,22 @@ const styles = StyleSheet.create({
   },
   joinBtn: {
     marginTop: 30,
-    width: 250,
+    width: 220,
     height: 50,
-    borderRadius: 20,
-    borderColor: Colors.secondaryGradient,
-    borderWidth: 2,
+    borderRadius: 50,
+    borderColor: Colors.primaryGradient,
+    borderWidth: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   titleStyle: {
     color: 'black',
     letterSpacing: 3,
+    fontSize: 16,
+    fontWeight: 'bold',
+    textTransform: 'uppercase',
+    lineHeight: 21,
+    textAlign: 'center',
   },
   signUp: {
     flexDirection: 'row',
@@ -104,14 +111,14 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins-Regular',
   },
   signUpBtn: {
-    color: Colors.secondaryGradient,
+    color: Colors.primaryGradient,
     fontWeight: '400',
     fontSize: 14,
     lineHeight: 18,
     fontFamily: 'Poppins-Regular',
   },
   text: {
-    marginHorizontal: 20,
+    marginHorizontal: 60,
     color: '#999999',
     fontFamily: 'Poppins-Regular',
     fontSize: 14,

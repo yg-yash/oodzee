@@ -7,6 +7,8 @@ import Colors from '../../../constants/Colors';
 const ThankYouScreen = ({navigation}) => {
   return (
     <LinearGradient
+      start={{x: 0, y: 0.4}}
+      end={{x: 0.2, y: 0}}
       colors={[Colors.primaryGradient, Colors.secondaryGradient]}
       style={styles.linearGradient}>
       <View style={styles.mainContent}>
@@ -15,8 +17,7 @@ const ThankYouScreen = ({navigation}) => {
       </View>
       <View style={styles.bottomContent}>
         <Text style={styles.thankText}>Thank You!</Text>
-        <TouchableWithoutFeedback
-          onPress={() => navigation.navigate('OrderStatus')}>
+        <TouchableWithoutFeedback onPress={() => navigation.popToTop()}>
           <View style={styles.gradient}>
             <Text style={styles.btnText}>continue shopping</Text>
           </View>
@@ -69,7 +70,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   btnText: {
-    color: Colors.secondaryGradient,
+    color: Colors.primaryGradient,
     textAlign: 'center',
     fontSize: 14,
     lineHeight: 21,

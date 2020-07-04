@@ -17,6 +17,8 @@ const OrderStatusScreen = ({navigation}) => {
   const [feedbackText, setFeedbackText] = useState('');
   return (
     <LinearGradient
+      start={{x: 0, y: 0.4}}
+      end={{x: 0.2, y: 0}}
       colors={[Colors.primaryGradient, Colors.secondaryGradient]}
       style={styles.linearGradient}>
       <View style={styles.centerContainer}>
@@ -26,9 +28,9 @@ const OrderStatusScreen = ({navigation}) => {
               <Icon
                 type={Platform.OS === 'android' ? 'materialicons' : 'ionicons'}
                 name={Platform.OS === 'android' ? 'close' : 'ios-close'}
-                color={Colors.secondaryGradient}
+                color={Colors.primaryGradient}
                 size={20}
-                onPress={() => navigation.replace('Dashboard')}
+                onPress={() => navigation.popToTop()}
               />
             </View>
             <View style={styles.mainContaier}>
@@ -69,7 +71,7 @@ const OrderStatusScreen = ({navigation}) => {
                     />
                   </View>
                   <TouchableWithoutFeedback
-                    onPress={() => navigation.navigate('UserMenu')}>
+                    onPress={() => navigation.popToTop()}>
                     <View style={styles.buttonContainer}>
                       <View style={styles.button}>
                         <Text style={styles.submitText}>SUBMIT</Text>
@@ -187,7 +189,7 @@ const styles = StyleSheet.create({
     shadowOffset: {width: 1, height: 13},
   },
   submitText: {
-    color: Colors.secondaryGradient,
+    color: Colors.primaryGradient,
     fontSize: 14,
     lineHeight: 21,
     letterSpacing: 2,

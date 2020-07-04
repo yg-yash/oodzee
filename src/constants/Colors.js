@@ -1,4 +1,6 @@
 export default {
-  primaryGradient: '#F56164',
-  secondaryGradient: '#E71989',
+  primaryGradient: '#E71989',
+  secondaryGradient: '#F56164',
+  underlayColor: '#fce4ec',
+  underlaylightColor: '#eeeeee',
 };

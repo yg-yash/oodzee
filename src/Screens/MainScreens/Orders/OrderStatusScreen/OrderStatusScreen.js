@@ -14,6 +14,8 @@ import {Card, Icon} from 'react-native-elements';
 const OrderStatusScreen = ({navigation}) => {
   return (
     <LinearGradient
+      start={{x: 0, y: 0.4}}
+      end={{x: 0.2, y: 0}}
       colors={[Colors.primaryGradient, Colors.secondaryGradient]}
       style={styles.linearGradient}>
       <View style={styles.centerContainer}>
@@ -23,7 +25,7 @@ const OrderStatusScreen = ({navigation}) => {
               <Icon
                 type={Platform.OS === 'android' ? 'materialicons' : 'ionicons'}
                 name={Platform.OS === 'android' ? 'close' : 'ios-close'}
-                color={Colors.secondaryGradient}
+                color={Colors.primaryGradient}
                 size={20}
                 onPress={() => navigation.pop()}
               />
@@ -163,7 +165,6 @@ const styles = StyleSheet.create({
   },
   line: {
     width: 1,
-    //    backgroundColor: 'black',
     marginHorizontal: '3%',
     elevation: 1,
     shadowColor: 'rgba(0, 0, 0, 0.1)',
@@ -200,7 +201,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   pickupText: {
-    color: Colors.secondaryGradient,
+    color: Colors.primaryGradient,
     fontWeight: 'bold',
     textAlign: 'center',
     fontSize: 14,

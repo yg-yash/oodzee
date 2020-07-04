@@ -56,9 +56,9 @@ const PaymentScreen = ({navigation}) => {
         <TouchableWithoutFeedback
           onPress={() => navigation.navigate('ThankYou')}>
           <LinearGradient
-            start={{x: 0, y: 0}}
+            start={{x: 0.5, y: 0.5}}
             end={{x: 1, y: 0}}
-            colors={[Colors.secondaryGradient, Colors.primaryGradient]}
+            colors={[Colors.primaryGradient, Colors.secondaryGradient]}
             style={styles.gradient}>
             <Text style={styles.btnText}>Pay</Text>
           </LinearGradient>
@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
   },
   gradient: {
     width: '90%',
-    height: 50,
+    height: 44,
     borderRadius: 50,
     justifyContent: 'center',
     alignItems: 'center',
@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
     right: 0,
     flexDirection: 'row',
     position: 'absolute',
-    bottom: 10,
+    bottom: 15,
     marginHorizontal: 20,
   },
 });
