@@ -1,14 +1,7 @@
 import React, {useLayoutEffect} from 'react';
 import {StyleSheet, View, TouchableOpacity} from 'react-native';
-import {Icon, Avatar} from 'react-native-elements';
-import Colors from '../../../constants/Colors';
-import LinearGradient from 'react-native-linear-gradient';
-
-const chatData = [
-  {
-    message: 'Hello',
-  },
-];
+import {Icon} from 'react-native-elements';
+import fonts from '../../../constants/fonts';
 
 const FeedbackChatScreen = ({navigation}) => {
   useLayoutEffect(() => {
@@ -19,6 +12,7 @@ const FeedbackChatScreen = ({navigation}) => {
       headerTitleStyle: {
         fontSize: 20,
         lineHeight: 30,
+        fontfamily: fonts.FONT_REGULAR,
       },
       headerRight: () => (
         <TouchableOpacity onPress={() => navigation.popToTop()}>
@@ -41,12 +35,16 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderTopStartRadius: 15,
     borderTopEndRadius: 15,
-    elevation: 16,
-    shadowColor: '#999999',
-    shadowOffset: {width: 0, height: 2},
-    shadowOpacity: 0.4,
-    shadowRadius: 6,
     overflow: 'hidden',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 8,
+    },
+    shadowOpacity: 0.44,
+    shadowRadius: 10.32,
+
+    elevation: 16,
   },
   container: {
     flex: 1,

@@ -5,10 +5,13 @@ import {
   View,
   TouchableWithoutFeedback,
   TextInput,
+  ScrollView,
+  Keyboard,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import MonthPicker from 'react-native-month-year-picker';
 import Colors from '../../../constants/Colors';
+import fonts from '../../../constants/fonts';
 import ShieldCheck from 'react-native-vector-icons/MaterialCommunityIcons';
 import PasswordIcon from 'react-native-vector-icons/SimpleLineIcons';
 
@@ -38,6 +41,11 @@ const UserAddPaymentMethodScreen = ({navigation}) => {
       headerShown: true,
       headerTitleAlign: 'center',
       headerTitle: 'Payment Methods',
+      headerTitleStyle: {
+        fontSize: 20,
+        lineHeight: 30,
+        fontFamily: fonts.FONT_REGULAR,
+      },
     });
   }, [navigation]);
 
@@ -51,104 +59,112 @@ const UserAddPaymentMethodScreen = ({navigation}) => {
           maximumDate={new Date(2025, 5)}
         />
       )}
-      <View style={styles.container}>
-        <View style={styles.cardContainer}>
-          <Text style={styles.cardText}>Card number</Text>
-          <View style={styles.inputContainer}>
-            <TextInput
-              value={cardInput}
-              style={styles.input}
-              onChangeText={value => setCardInput(value)}
-              placeholder="****"
-            />
-            <TextInput
-              value={cardInput}
-              style={[styles.input, styles.restInput]}
-              onChangeText={value => setCardInput(value)}
-              placeholder="****"
-            />
-            <TextInput
-              value={cardInput}
-              style={[styles.input, styles.restInput]}
-              onChangeText={value => setCardInput(value)}
-              placeholder="****"
-            />
-            <TextInput
-              value={cardInput}
-              style={[styles.input, styles.restInput]}
-              onChangeText={value => setCardInput(value)}
-              placeholder="****"
-            />
-          </View>
-          <View style={styles.cardMoreDetails}>
-            <View style={styles.validContainer}>
-              <Text style={styles.cardText}>Valid until</Text>
-              <View style={styles.validInputContainer}>
-                <Text
-                  style={styles.validInput}
-                  onPress={() => showPicker(true)}>
-                  {month}
-                </Text>
+      <ScrollView style={{flex: 1}} contentContainerStyle={{flexGrow: 1}}>
+        <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+          <View style={styles.container}>
+            <View style={styles.cardContainer}>
+              <Text style={styles.cardText}>Card number</Text>
+              <View style={styles.inputContainer}>
+                <TextInput
+                  value={cardInput}
+                  style={styles.input}
+                  onChangeText={value => setCardInput(value)}
+                  placeholder="****"
+                />
+                <TextInput
+                  value={cardInput}
+                  style={[styles.input, styles.restInput]}
+                  onChangeText={value => setCardInput(value)}
+                  placeholder="****"
+                />
+                <TextInput
+                  value={cardInput}
+                  style={[styles.input, styles.restInput]}
+                  onChangeText={value => setCardInput(value)}
+                  placeholder="****"
+                />
+                <TextInput
+                  value={cardInput}
+                  style={[styles.input, styles.restInput]}
+                  onChangeText={value => setCardInput(value)}
+                  placeholder="****"
+                />
+              </View>
+              <View style={styles.cardMoreDetails}>
+                <View style={styles.validContainer}>
+                  <Text style={styles.cardText}>Valid until</Text>
+                  <View style={styles.validInputContainer}>
+                    <Text
+                      style={styles.validInput}
+                      onPress={() => showPicker(true)}>
+                      {month}
+                    </Text>
 
-                <Text
-                  style={styles.validInput}
-                  onPress={() => showPicker(true)}>
-                  {year}
-                </Text>
+                    <Text
+                      style={styles.validInput}
+                      onPress={() => showPicker(true)}>
+                      {year}
+                    </Text>
+                  </View>
+                </View>
+                <View style={styles.validContainer}>
+                  <Text style={styles.cardText}>CVV</Text>
+                  <TextInput
+                    value={cvv}
+                    style={styles.cvvInput}
+                    onChangeText={value => setCvv(value)}
+                    placeholder="* * * *"
+                  />
+                </View>
+              </View>
+              <View>
+                <View style={styles.validContainer}>
+                  <Text style={styles.cardText}>Card Holder</Text>
+                  <TextInput
+                    value={cardHolderName}
+                    style={styles.cardHolderInput}
+                    onChangeText={value => setcardHolderName(value)}
+                    placeholder="Your name and surname"
+                  />
+                </View>
               </View>
             </View>
-            <View style={styles.validContainer}>
-              <Text style={styles.cardText}>CVV</Text>
-              <TextInput
-                value={cvv}
-                style={styles.cvvInput}
-                onChangeText={value => setCvv(value)}
-                placeholder="* * * *"
+            {/* Add Naavigation  to this  */}
+            <TouchableWithoutFeedback>
+              <LinearGradient
+                start={{x: 0.5, y: 0.5}}
+                end={{x: 1, y: 0}}
+                colors={[Colors.primaryGradient, Colors.secondaryGradient]}
+                style={styles.gradient}>
+                <Text style={styles.btnText}>confirm</Text>
+              </LinearGradient>
+            </TouchableWithoutFeedback>
+            <View style={styles.icons}>
+              <ShieldCheck
+                name="shield-check-outline"
+                color="#226D21"
+                size={25}
+              />
+              <PasswordIcon
+                name="lock"
+                size={25}
+                style={{marginLeft: 10}}
+                color="#999999"
               />
             </View>
-          </View>
-          <View>
-            <View style={styles.validContainer}>
-              <Text style={styles.cardText}>Card Holder</Text>
-              <TextInput
-                value={cardHolderName}
-                style={styles.cardHolderInput}
-                onChangeText={value => setcardHolderName(value)}
-                placeholder="Your name and surname"
-              />
+            <View>
+              <Text style={styles.text}>
+                All payments are passed by our certified payment service.
+                Stripe, which means that OODZEE does not save an of your
+                sensitive information.
+              </Text>
+              <Text style={styles.pinkText}>
+                Read more about OODZEE’s payment security here.
+              </Text>
             </View>
           </View>
-        </View>
-        {/* Add Naavigation  to this  */}
-        <TouchableWithoutFeedback>
-          <LinearGradient
-            start={{x: 0.5, y: 0.5}}
-            end={{x: 1, y: 0}}
-            colors={[Colors.primaryGradient, Colors.secondaryGradient]}
-            style={styles.gradient}>
-            <Text style={styles.btnText}>confirm</Text>
-          </LinearGradient>
         </TouchableWithoutFeedback>
-        <View style={styles.icons}>
-          <ShieldCheck name="shield-check-outline" color="#226D21" size={25} />
-          <PasswordIcon
-            name="lock"
-            size={25}
-            style={{marginLeft: 10}}
-            color="#999999"
-          />
-        </View>
-        <View>
-          <Text style={styles.text}>
-            All payments are passed by our certified payment service. Stripe,
-            which means that OODZEE does not save an of your sensitive
-            information.
-          </Text>
-          <Text style={styles.pinkText}>
-            Read more about OODZEE’s payment security here.
-          </Text>
-        </View>
-      </View>
+      </ScrollView>
     </View>
   );
 };
@@ -160,12 +176,17 @@ const styles = StyleSheet.create({
     borderTopStartRadius: 15,
     borderTopEndRadius: 15,
     paddingTop: 6,
-    elevation: 6,
-    shadowColor: '#999999',
-    shadowOffset: {width: 0, height: 2},
-    shadowOpacity: 0.4,
-    shadowRadius: 6,
+
     overflow: 'hidden',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 8,
+    },
+    shadowOpacity: 0.44,
+    shadowRadius: 10.32,
+
+    elevation: 16,
   },
   container: {
     paddingVertical: '10%',
@@ -235,6 +256,7 @@ const styles = StyleSheet.create({
   cardText: {
     fontSize: 14,
     lineHeight: 21,
+    fontFamily: fonts.FONT_REGULAR,
   },
   inputContainer: {
     flexDirection: 'row',
@@ -246,8 +268,8 @@ const styles = StyleSheet.create({
     fontSize: 21,
     lineHeight: 30,
     letterSpacing: 5,
-    textAlign: 'center',
     color: '#999999',
+    fontFamily: fonts.FONT_REGULAR,
   },
   restInput: {
     marginLeft: 5,
@@ -270,14 +292,16 @@ const styles = StyleSheet.create({
     borderBottomColor: 'rgba(153, 153, 153, 0.2)',
     marginHorizontal: 10,
     paddingVertical: 10,
+    fontFamily: fonts.FONT_REGULAR,
   },
   cvvInput: {
     borderBottomWidth: 1,
     borderBottomColor: 'rgba(153, 153, 153, 0.2)',
     fontSize: 20,
+    lineHeight: 30,
     width: '120%',
     color: '#999999',
-    textAlign: 'center',
+    fontFamily: fonts.FONT_REGULAR,
   },
   cardMoreDetails: {
     flexDirection: 'row',
@@ -289,6 +313,7 @@ const styles = StyleSheet.create({
     lineHeight: 18,
     width: '100%',
     color: '#999999',
+    fontFamily: fonts.FONT_REGULAR,
   },
   gradient: {
     marginTop: 30,
@@ -297,14 +322,23 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     justifyContent: 'center',
     alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.27,
+    shadowRadius: 4.65,
+
+    elevation: 6,
   },
   btnText: {
     color: 'white',
     fontSize: 14,
-    fontWeight: 'bold',
     lineHeight: 21,
     letterSpacing: 2,
     textTransform: 'uppercase',
+    fontFamily: fonts.FONT_BOLD,
   },
 
   icons: {
@@ -318,14 +352,15 @@ const styles = StyleSheet.create({
     lineHeight: 18,
     textAlign: 'center',
     color: '#999999',
+    fontFamily: fonts.FONT_REGULAR,
   },
   pinkText: {
     marginTop: 20,
     fontSize: 12,
     lineHeight: 18,
-    fontWeight: 'bold',
     textAlign: 'center',
     color: Colors.primaryGradient,
+    fontFamily: fonts.FONT_BOLD,
   },
 });
 

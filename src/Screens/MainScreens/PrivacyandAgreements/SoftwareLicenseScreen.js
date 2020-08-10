@@ -1,5 +1,6 @@
 import React, {useLayoutEffect} from 'react';
 import {StyleSheet, View, Text, ScrollView} from 'react-native';
+import fonts from '../../../constants/fonts';
 
 const SoftwareLicences = ({navigation}) => {
   useLayoutEffect(() => {
@@ -7,6 +8,11 @@ const SoftwareLicences = ({navigation}) => {
       headerShown: true,
       headerTitleAlign: 'center',
       headerTitle: 'User Agreement',
+      headerTitleStyle: {
+        fontSize: 20,
+        lineHeight: 30,
+        fontFamily: fonts.FONT_REGULAR,
+      },
     });
   }, [navigation]);
 
@@ -80,46 +86,30 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderTopStartRadius: 15,
     borderTopEndRadius: 15,
-    elevation: 16,
-    shadowColor: '#999999',
-    shadowOffset: {width: 0, height: 2},
-    shadowOpacity: 0.4,
-    shadowRadius: 6,
     overflow: 'hidden',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 8,
+    },
+    shadowOpacity: 0.44,
+    shadowRadius: 10.32,
+    elevation: 16,
   },
   container: {
     flex: 1,
     marginTop: 5,
   },
-  pickerRow: {
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-  },
-  picker: {height: 50, width: 120},
-  greyText: {
-    alignSelf: 'flex-end',
-    fontSize: 12,
-    lineHeight: 18,
-    color: '#999999',
-    marginRight: 10,
-  },
-  heading: {
-    fontSize: 18,
-    lineHeight: 27,
-    fontWeight: 'bold',
-  },
+
   textContainer: {
     marginTop: 10,
     padding: 20,
   },
   smallText: {
     marginVertical: 10,
-  },
-  smallheading: {
-    fontSize: 14,
-    lineHeight: 21,
-    fontWeight: 'bold',
+    fontFamily: fonts.FONT_REGULAR,
+    fontSize: 10,
+    lineHeight: 15,
   },
 });
 

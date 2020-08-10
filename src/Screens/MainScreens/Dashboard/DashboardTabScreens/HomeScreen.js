@@ -8,32 +8,33 @@ import {
 } from 'react-native';
 import {ScrollView, FlatList} from 'react-native-gesture-handler';
 import Colors from '../../../../constants/Colors';
+import fonts from '../../../../constants/fonts';
 import {Icon, Badge} from 'react-native-elements';
 
 const HomeScreen = ({navigation}) => {
   const [foodItems, setfoodItems] = useState([
     {
       id: 1,
-      image: require('../../../../../assests/images/burger.jpg'),
+      image: require('../../../../../assets/images/burger.jpg'),
     },
     {
       id: 2,
-      image: require('../../../../../assests/images/burger.jpg'),
+      image: require('../../../../../assets/images/burger.jpg'),
     },
     {
       id: 3,
-      image: require('../../../../../assests/images/burger.jpg'),
+      image: require('../../../../../assets/images/burger.jpg'),
     },
     {
       id: 4,
-      image: require('../../../../../assests/images/burger.jpg'),
+      image: require('../../../../../assets/images/burger.jpg'),
     },
   ]);
 
   const _renderItem = (item, index) => {
     return (
       <TouchableWithoutFeedback
-        onPress={() => navigation.navigate('FoodDetail')}>
+        onPress={() => navigation.navigate('Food Detail')}>
         <View style={styles.card}>
           <Image source={item.image} resizeMode="cover" style={styles.image} />
         </View>
@@ -47,13 +48,13 @@ const HomeScreen = ({navigation}) => {
         showsHorizontalScrollIndicator={false}
         horizontal
         data={foodItems}
-        keyExtractor={item => item.id}
+        keyExtractor={item => item.id.toString()}
         renderItem={({item, index}) => _renderItem(item, index)}
       />
       <View style={styles.firstRow}>
         <Text style={styles.titleText}>
           It is a long established fact that a reader
-          <Text style={styles.pinkText}>40%</Text> will be distracted by the
+          <Text style={styles.pinkText}> 40%</Text> will be distracted by the
           readable content of a page when looking at its layout.
         </Text>
         <TouchableWithoutFeedback onPress={() => console.log('aclled')}>
@@ -165,9 +166,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   titleText: {
-    fontSize: 12,
+    fontSize: 10,
     lineHeight: 15,
     textAlign: 'center',
+    fontFamily: fonts.FONT_REGULAR,
   },
   pinkText: {
     color: Colors.primaryGradient,
@@ -186,10 +188,11 @@ const styles = StyleSheet.create({
   titleStyle: {
     color: 'black',
     letterSpacing: 2,
-    fontSize: 10,
+    fontSize: 8,
     textTransform: 'uppercase',
     lineHeight: 12,
     textAlign: 'center',
+    fontFamily: fonts.FONT_REGULAR,
   },
   secondRow: {
     marginTop: 25,
@@ -212,10 +215,11 @@ const styles = StyleSheet.create({
   },
 
   cardText: {
-    fontSize: 12,
-    lineHeight: 18,
+    fontSize: 10,
+    lineHeight: 15,
     color: '#535151',
     paddingHorizontal: 10,
+    fontFamily: fonts.FONT_REGULAR,
   },
   badge: {
     // justifyContent: 'flex-end',

@@ -5,12 +5,16 @@ import {
   View,
   TextInput,
   TouchableOpacity,
+  Keyboard,
+  TouchableWithoutFeedback,
+  ScrollView,
 } from 'react-native';
 import {Avatar} from 'react-native-elements';
 import UserIcon from 'react-native-vector-icons/FontAwesome';
 import MailIcon from 'react-native-vector-icons/Feather';
 import LinearGradient from 'react-native-linear-gradient';
 import Colors from '../../../constants/Colors';
+import fonts from '../../../constants/fonts';
 
 const EditProfileScreen = ({navigation}) => {
   const [email, setEmail] = useState('');
@@ -20,51 +24,62 @@ const EditProfileScreen = ({navigation}) => {
       headerShown: true,
       headerTitleAlign: 'center',
       headerTitle: 'Edit Profile',
+      headerTitleStyle: {
+        fontSize: 20,
+        lineHeight: 30,
+        fontFamily: fonts.FONT_REGULAR,
+      },
     });
   }, [navigation]);
   return (
     <View style={styles.screen}>
-      <View style={styles.container}>
-        <Avatar
-          containerStyle={styles.avatarContainer}
-          rounded
-          size={150}
-          source={require('../../../../assests/images/usericon2.png')}
-          showAccessory
-        />
-        <View style={styles.form}>
-          <View style={styles.inputContainer}>
-            <UserIcon name="user-o" size={18} style={styles.inputLogo} />
-            <TextInput
-              value={email}
-              placeholder="Name"
-              onChangeText={text => setEmail(text)}
-              style={styles.input}
+      <ScrollView style={{flex: 1}} contentContainerStyle={{flexGrow: 1}}>
+        <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+          <View style={styles.container}>
+            <Avatar
+              containerStyle={styles.avatarContainer}
+              rounded
+              size={150}
+              source={require('../../../../assets/images/usericon2.png')}
+              showAccessory
             />
+            <View style={styles.form}>
+              <View style={styles.inputContainer}>
+                <UserIcon name="user-o" size={18} style={styles.inputLogo} />
+                <TextInput
+                  value={email}
+                  placeholder="Name"
+                  onChangeText={text => setEmail(text)}
+                  style={styles.input}
+                />
+              </View>
+              <View style={styles.inputContainer}>
+                <MailIcon name="mail" size={18} style={styles.inputLogo} />
+                <TextInput
+                  value={username}
+                  placeholder="Email address"
+                  onChangeText={text => setUsername(text)}
+                  style={styles.input}
+                />
+              </View>
+            </View>
+            <LinearGradient
+              start={{x: 0.5, y: 0.5}}
+              end={{x: 1, y: 0}}
+              colors={[Colors.primaryGradient, Colors.secondaryGradient]}
+              style={styles.gradient}>
+              <Text style={styles.btnText}>Save</Text>
+            </LinearGradient>
+            <TouchableOpacity
+              underlayColor={Colors.underlaylightColor}
+              onPress={() => navigation.navigate('DeleteUser')}>
+              <Text style={styles.removeText}>
+                Want to remove your account?
+              </Text>
+            </TouchableOpacity>
           </View>
-          <View style={styles.inputContainer}>
-            <MailIcon name="mail" size={18} style={styles.inputLogo} />
-            <TextInput
-              value={username}
-              placeholder="Email address"
-              onChangeText={text => setUsername(text)}
-              style={styles.input}
-            />
-          </View>
-        </View>
-        <LinearGradient
-          start={{x: 0.5, y: 0.5}}
-          end={{x: 1, y: 0}}
-          colors={[Colors.primaryGradient, Colors.secondaryGradient]}
-          style={styles.gradient}>
-          <Text style={styles.btnText}>Save</Text>
-        </LinearGradient>
-        <TouchableOpacity
-          underlayColor={Colors.underlaylightColor}
-          onPress={() => navigation.navigate('DeleteUser')}>
-          <Text style={styles.removeText}>Want to remove your account?</Text>
-        </TouchableOpacity>
-      </View>
+        </TouchableWithoutFeedback>
+      </ScrollView>
     </View>
   );
 };
@@ -75,12 +90,15 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderTopStartRadius: 15,
     borderTopEndRadius: 15,
-    elevation: 16,
-    shadowColor: '#999999',
-    shadowOffset: {width: 0, height: 2},
-    shadowOpacity: 0.4,
-    shadowRadius: 6,
     overflow: 'hidden',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 8,
+    },
+    shadowOpacity: 0.44,
+    shadowRadius: 10.32,
+    elevation: 16,
   },
   container: {
     flex: 1,
@@ -112,6 +130,9 @@ const styles = StyleSheet.create({
     marginLeft: '5%',
     color: '#999999',
     flex: 1,
+    fontSize: 12,
+    lineHeight: 18,
+    fontFamily: fonts.FONT_REGULAR,
   },
   gradient: {
     marginTop: 10,
@@ -120,17 +141,29 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     justifyContent: 'center',
     alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.27,
+    shadowRadius: 4.65,
+
+    elevation: 6,
   },
   btnText: {
     color: 'white',
     fontSize: 14,
-    fontWeight: 'bold',
+    fontFamily: fonts.FONT_BOLD,
     lineHeight: 21,
     letterSpacing: 2,
     textTransform: 'uppercase',
   },
   removeText: {
     marginTop: 20,
+    fontSize: 12,
+    lineHeight: 18,
+    fontFamily: fonts.FONT_REGULAR,
   },
 });
 

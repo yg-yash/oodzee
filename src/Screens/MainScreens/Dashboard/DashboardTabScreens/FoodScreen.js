@@ -12,6 +12,7 @@ import {Icon, Card} from 'react-native-elements';
 import {ScrollView, FlatList} from 'react-native-gesture-handler';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Colors from '../../../../constants/Colors';
+import fonts from '../../../../constants/fonts';
 
 const FoodScreen = ({navigation}) => {
   const [searchValue, setSearchValue] = useState('');
@@ -21,7 +22,9 @@ const FoodScreen = ({navigation}) => {
   const renderItem = items =>
     items.map(item =>
       currentItem === item.name ? (
-        <TouchableWithoutFeedback onPress={() => setCurrentItem(item.name)}>
+        <TouchableWithoutFeedback
+          onPress={() => setCurrentItem(item.name)}
+          key={item.name}>
           <Card containerStyle={styles.itemSelectedCard}>
             {item.icon.selected}
             <Text style={styles.itemSelectedText} numberOfLines={1}>
@@ -30,7 +33,9 @@ const FoodScreen = ({navigation}) => {
           </Card>
         </TouchableWithoutFeedback>
       ) : (
-        <TouchableWithoutFeedback onPress={() => setCurrentItem(item.name)}>
+        <TouchableWithoutFeedback
+          onPress={() => setCurrentItem(item.name)}
+          key={item.name}>
           <Card containerStyle={styles.item}>
             {item.icon.notSelected}
             <Text style={styles.itemText} numberOfLines={1}>
@@ -61,11 +66,12 @@ const FoodScreen = ({navigation}) => {
   );
 
   const renderSingleFoodContainer = () => (
-    <TouchableWithoutFeedback onPress={() => navigation.navigate('FoodDetail')}>
+    <TouchableWithoutFeedback
+      onPress={() => navigation.navigate('Food Detail')}>
       <View style={styles.singleFoodContainer}>
         <Card
           containerStyle={styles.singleFoodCard}
-          image={require('../../../../../assests/images/burger.jpg')}
+          image={require('../../../../../assets/images/burger.jpg')}
           imageProps={{resizeMode: 'cover'}}
           imageStyle={styles.image}
           imageWrapperStyle={styles.imageContainer}
@@ -89,7 +95,7 @@ const FoodScreen = ({navigation}) => {
             <Text style={styles.rating}>
               4.0 <Text style={styles.ratingIcons}>*****</Text>
             </Text>
-            <View style={{flexDirection: 'row'}}>
+            <View style={{flexDirection: 'row', alignItems: 'center'}}>
               <MaterialCommunityIcons name="home" color="#999999" />
               <Text style={styles.smallGreyText}>1.5 km</Text>
             </View>
@@ -113,8 +119,8 @@ const FoodScreen = ({navigation}) => {
           <TextInput
             value={searchValue}
             onChangeText={value => setSearchValue(value)}
-            placeholder="Search your location"
-            style={[styles.input]}
+            placeholder="Search for restaurants and food..."
+            style={styles.input}
           />
         </View>
       </View>
@@ -144,7 +150,7 @@ const FoodScreen = ({navigation}) => {
         <View style={styles.topPlacesContainer}>
           <FlatList
             data={topPlacesList}
-            keyExtractor={item => item.id}
+            keyExtractor={item => item.id.toString()}
             renderItem={({item, index}) => renderTopPlaces(item)}
             horizontal
             showsHorizontalScrollIndicator={false}
@@ -152,6 +158,7 @@ const FoodScreen = ({navigation}) => {
         </View>
         <FlatList
           data={[1, 2, 3, 4, 5, 6]}
+          keyExtractor={item => item.toString()}
           renderItem={({item}) => renderSingleFoodContainer()}
         />
       </View>
@@ -183,6 +190,9 @@ const styles = StyleSheet.create({
   input: {
     color: '#999999',
     flex: 1,
+    fontSize: 12,
+    lineHeight: 18,
+    fontFamily: fonts.FONT_REGULAR,
   },
   inputrow: {
     paddingHorizontal: 20,
@@ -208,10 +218,11 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 2,
     fontSize: 10,
-    lineHeight: 18,
+    lineHeight: 15,
     color: '#999999',
     textAlign: 'center',
     textTransform: 'capitalize',
+    fontFamily: fonts.FONT_REGULAR,
   },
   item: {
     width: 70,
@@ -223,11 +234,12 @@ const styles = StyleSheet.create({
   itemText: {
     flex: 1,
     fontSize: 10,
-    lineHeight: 18,
+    lineHeight: 15,
     color: '#999999',
     textAlign: 'center',
     flexWrap: 'wrap',
     textTransform: 'capitalize',
+    fontFamily: fonts.FONT_REGULAR,
   },
   optionsRow: {
     flexDirection: 'row',
@@ -247,6 +259,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     lineHeight: 18,
     color: '#999999',
+    fontFamily: fonts.FONT_REGULAR,
   },
   singleFoodCard: {
     flex: 2,
@@ -283,6 +296,7 @@ const styles = StyleSheet.create({
     marginTop: 5,
     fontSize: 12,
     lineHeight: 18,
+    fontFamily: fonts.FONT_REGULAR,
   },
   heading: {
     flexDirection: 'row',
@@ -294,24 +308,28 @@ const styles = StyleSheet.create({
     fontSize: 10,
     lineHeight: 12,
     textTransform: 'uppercase',
+    fontFamily: fonts.FONT_REGULAR,
   },
   smallGreyText: {
     fontSize: 8,
     lineHeight: 12,
     textTransform: 'uppercase',
     color: '#999999',
+    fontFamily: fonts.FONT_REGULAR,
   },
   foodDescription: {
     marginTop: 10,
     fontSize: 8,
     lineHeight: 9,
     color: '#999999',
+    fontFamily: fonts.FONT_REGULAR,
   },
   rating: {
     fontSize: 10,
     lineHeight: 12,
     marginTop: 15,
     textTransform: 'uppercase',
+    fontFamily: fonts.FONT_REGULAR,
   },
   ratingIcons: {
     color: '#FDD20E',
@@ -323,13 +341,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   topPlaces: {
-    fontSize: 16,
+    fontSize: 12,
     lineHeight: 18,
     letterSpacing: 3,
     color: '#535151',
     marginTop: 20,
-    textAlign: 'center',
+    marginLeft: 20,
     textTransform: 'uppercase',
+    fontFamily: fonts.FONT_REGULAR,
   },
   topPlacesContainer: {
     marginTop: 5,
@@ -349,16 +368,18 @@ const styles = StyleSheet.create({
   },
   titleText: {
     fontWeight: 'bold',
-    fontSize: 10,
+    fontSize: 6,
     lineHeight: 9,
     color: 'white',
     marginTop: 5,
+    fontFamily: fonts.FONT_REGULAR,
   },
   subtitleText: {
-    fontSize: 8,
+    fontSize: 5,
     marginTop: 5,
     lineHeight: 7,
     color: 'white',
+    fontFamily: fonts.FONT_REGULAR,
   },
   placesImage: {
     width: '100%',
@@ -456,35 +477,35 @@ const cardItems = [
 const topPlacesList = [
   {
     id: 1,
-    image: require('../../../../../assests/images/burger.jpg'),
+    image: require('../../../../../assets/images/burger.jpg'),
     title: 'Loriem ipsum',
     subtitle: 'It is a long established fact that a reader will be distracted',
     backgroundColor: '#DB6811',
   },
   {
     id: 2,
-    image: require('../../../../../assests/images/burger.jpg'),
+    image: require('../../../../../assets/images/burger.jpg'),
     title: 'Loriem ipsum',
     subtitle: 'It is a long established fact that a reader will be distracted',
     backgroundColor: '#4A4A4B',
   },
   {
     id: 3,
-    image: require('../../../../../assests/images/burger.jpg'),
+    image: require('../../../../../assets/images/burger.jpg'),
     title: 'Loriem ipsum',
     subtitle: 'It is a long established fact that a reader will be distracted',
     backgroundColor: '#6A1500',
   },
   {
     id: 4,
-    image: require('../../../../../assests/images/burger.jpg'),
+    image: require('../../../../../assets/images/burger.jpg'),
     title: 'Loriem ipsum',
     subtitle: 'It is a long established fact that a reader will be distracted',
     backgroundColor: '#DB6811',
   },
   {
     id: 5,
-    image: require('../../../../../assests/images/burger.jpg'),
+    image: require('../../../../../assets/images/burger.jpg'),
     title: 'Loriem ipsum',
     subtitle: 'It is a long established fact that a reader will be distracted',
     backgroundColor: '#4A4A4B',

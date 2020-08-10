@@ -1,14 +1,20 @@
 import React, {useLayoutEffect} from 'react';
-import {StyleSheet, Text, View, TouchableWithoutFeedback} from 'react-native';
+import {StyleSheet, Text, View, Image} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import AddIcon from 'react-native-vector-icons/Ionicons';
 import Colors from '../../../constants/Colors';
+import fonts from '../../../constants/fonts';
+import {Icon} from 'react-native-elements';
 
 const CreditsScreen = ({navigation}) => {
   useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: true,
       headerTitleAlign: 'center',
+      headerTitleStyle: {
+        fontFamily: fonts.FONT_REGULAR,
+        fontSize: 20,
+        lineHeight: 30,
+      },
     });
   }, [navigation]);
   return (
@@ -19,10 +25,17 @@ const CreditsScreen = ({navigation}) => {
         colors={[Colors.primaryGradient, Colors.secondaryGradient]}
         style={styles.linearGradient}>
         <View style={styles.mainContent}>
-          <AddIcon
-            name="ios-add-circle-outline"
-            size={50}
-            color="white"
+          <Image
+            source={require('../../../../assets/images/credits.png')}
+            resizeMode="contain"
+            style={{width: 357, height: 341}}
+          />
+          <Icon
+            type="antdesign"
+            name="plus"
+            raised
+            size={20}
+            color={Colors.primaryGradient}
             onPress={() => navigation.navigate('AddCredits')}
           />
           <Text style={styles.thankText}>Add More Credits</Text>
@@ -42,11 +55,14 @@ const styles = StyleSheet.create({
     flex: 1,
     borderTopStartRadius: 15,
     borderTopEndRadius: 15,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 8,
+    },
+    shadowOpacity: 0.44,
+    shadowRadius: 10.32,
     elevation: 16,
-    shadowColor: '#999999',
-    shadowOffset: {width: 0, height: 2},
-    shadowOpacity: 0.4,
-    shadowRadius: 6,
     overflow: 'hidden',
   },
   linearGradient: {
@@ -56,7 +72,7 @@ const styles = StyleSheet.create({
   },
   mainContent: {
     flex: 1,
-    justifyContent: 'center',
+
     alignItems: 'center',
   },
   placeText: {
@@ -76,35 +92,19 @@ const styles = StyleSheet.create({
     lineHeight: 21,
     fontSize: 14,
     textAlign: 'center',
-    fontFamily: 'Poppins',
     letterSpacing: 2,
     textTransform: 'uppercase',
     bottom: 20,
     marginTop: 30,
-    fontWeight: 'bold',
+    fontFamily: fonts.FONT_BOLD,
   },
-  gradient: {
-    width: 310,
-    height: 44,
-    borderRadius: 50,
-    backgroundColor: 'white',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  btnText: {
-    color: Colors.secondaryGradient,
-    textAlign: 'center',
-    fontSize: 14,
-    lineHeight: 21,
-    letterSpacing: 2,
-    textTransform: 'uppercase',
-    fontFamily: 'Poppins',
-  },
+
   smallText: {
     fontSize: 12,
     lineHeight: 18,
     textAlign: 'center',
     color: 'white',
+    fontFamily: fonts.FONT_REGULAR,
   },
 });
 

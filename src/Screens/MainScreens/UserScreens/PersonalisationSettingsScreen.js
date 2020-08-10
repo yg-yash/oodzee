@@ -1,6 +1,7 @@
 import React, {useLayoutEffect} from 'react';
 import {StyleSheet, View, Text} from 'react-native';
 import Colors from '../../../constants/Colors';
+import fonts from '../../../constants/fonts';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
 
 const PersonalisationSettingsScreen = ({navigation}) => {
@@ -9,6 +10,11 @@ const PersonalisationSettingsScreen = ({navigation}) => {
       headerShown: true,
       headerTitleAlign: 'center',
       headerTitle: 'Personalisation Settings',
+      headerTitleStyle: {
+        fontSize: 20,
+        lineHeight: 30,
+        fontFamily: fonts.FONT_REGULAR,
+      },
     });
   }, [navigation]);
 
@@ -41,11 +47,15 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderTopStartRadius: 15,
     borderTopEndRadius: 15,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 8,
+    },
+    shadowOpacity: 0.44,
+    shadowRadius: 10.32,
+
     elevation: 16,
-    shadowColor: '#999999',
-    shadowOffset: {width: 0, height: 2},
-    shadowOpacity: 0.4,
-    shadowRadius: 6,
     overflow: 'hidden',
   },
   container: {
@@ -60,6 +70,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     lineHeight: 18,
     color: '#999999',
+    fontFamily: fonts.FONT_REGULAR,
   },
   row: {
     paddingHorizontal: 20,
@@ -74,6 +85,7 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     fontSize: 15,
     lineHeight: 21,
+    fontFamily: fonts.FONT_REGULAR,
   },
 });
 

@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import Colors from '../../../../constants/Colors';
+import fonts from '../../../../constants/fonts';
 import {Icon, Card} from 'react-native-elements';
 import {FlatList} from 'react-native-gesture-handler';
 
@@ -16,9 +17,10 @@ const orderList = [
     date: 'Jan 2020',
     orders: [
       {
+        id: 1,
         date: '12',
         day: 'Thu',
-        image: require('../../../../../assests/images/burger.jpg'),
+        image: require('../../../../../assets/images/burger.jpg'),
         title: 'Draggen Burger',
         subTitle: 'A One restaurent,  Vegas',
         quantity: 2,
@@ -26,9 +28,10 @@ const orderList = [
         delivered: false,
       },
       {
+        id: 2,
         date: '09',
         day: 'Mon',
-        image: require('../../../../../assests/images/burger.jpg'),
+        image: require('../../../../../assets/images/burger.jpg'),
         title: 'Draggen Burger',
         subTitle: 'A One restaurent,  Vegas',
         quantity: 2,
@@ -42,9 +45,10 @@ const orderList = [
     date: 'Dec 2019',
     orders: [
       {
+        id: 1,
         date: '28',
         day: 'Fri',
-        image: require('../../../../../assests/images/burger.jpg'),
+        image: require('../../../../../assets/images/burger.jpg'),
         title: 'Draggen Burger',
         subTitle: 'A One restaurent,  Vegas',
         quantity: 2,
@@ -52,9 +56,10 @@ const orderList = [
         delivered: true,
       },
       {
+        id: 2,
         date: '20',
         day: 'Wed',
-        image: require('../../../../../assests/images/burger.jpg'),
+        image: require('../../../../../assets/images/burger.jpg'),
         title: 'Draggen Burger',
         subTitle: 'A One restaurent,  Vegas',
         quantity: 2,
@@ -62,9 +67,10 @@ const orderList = [
         delivered: true,
       },
       {
+        id: 3,
         date: '01',
         day: 'Sat',
-        image: require('../../../../../assests/images/burger.jpg'),
+        image: require('../../../../../assets/images/burger.jpg'),
         title: 'Draggen Burger',
         subTitle: 'A One restaurent,  Vegas',
         quantity: 2,
@@ -79,7 +85,8 @@ const HistoryScreen = ({navigation}) => {
   const renderOrderItem = item => (
     <TouchableHighlight
       underlayColor={Colors.underlaylightColor}
-      onPress={() => navigation.navigate('OrderDetails')}>
+      onPress={() => navigation.navigate('OrderDetails')}
+      key={item.id}>
       <View style={styles.orderCardContainer}>
         <View style={styles.leftContainer}>
           <Text style={styles.itemDate}>{item.date}</Text>
@@ -133,7 +140,7 @@ const HistoryScreen = ({navigation}) => {
     <View style={styles.screen}>
       <FlatList
         data={orderList}
-        keyExtractor={(item, index) => item.id}
+        keyExtractor={(item, index) => item.id.toString()}
         renderItem={({item}) => renderOrderList(item)}
       />
     </View>
@@ -165,6 +172,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     lineHeight: 18,
     color: '#999999',
+    fontFamily: fonts.FONT_REGULAR,
   },
   orderCardContainer: {
     flex: 1,
@@ -186,10 +194,12 @@ const styles = StyleSheet.create({
   itemDate: {
     fontSize: 18,
     lineHeight: 27,
+    fontFamily: fonts.FONT_REGULAR,
   },
   itemDay: {
     fontSize: 10,
     lineHeight: 15,
+    fontFamily: fonts.FONT_REGULAR,
   },
   cardImageContainer: {
     flex: 1,
@@ -216,14 +226,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   titleText: {
-    fontSize: 14,
+    fontSize: 12,
     lineHeight: 18,
+    fontFamily: fonts.FONT_REGULAR,
   },
   subTitle: {
     fontSize: 8,
-    lineHeight: 8,
+    lineHeight: 12,
     textTransform: 'uppercase',
     color: '#999999',
+    fontFamily: fonts.FONT_REGULAR,
   },
   productsDetails: {
     flexDirection: 'row',
@@ -235,13 +247,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginTop: 10,
   },
-  orderStatusText: {
-    paddingHorizontal: 10,
-    paddingVertical: 2,
-    color: 'white',
-    fontSize: 10,
-    borderRadius: 16,
-  },
+
   smallLine: {
     borderWidth: 1,
     borderColor: '#999999',
@@ -249,6 +255,7 @@ const styles = StyleSheet.create({
   detailsText: {
     fontSize: 10,
     lineHeight: 15,
+    fontFamily: fonts.FONT_REGULAR,
   },
   trackText: {
     fontSize: 10,
@@ -261,5 +268,6 @@ const styles = StyleSheet.create({
     lineHeight: 9,
     textAlign: 'center',
     color: '#535151',
+    fontFamily: fonts.FONT_REGULAR,
   },
 });

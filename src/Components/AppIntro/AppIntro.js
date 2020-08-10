@@ -4,7 +4,9 @@ import AppIntroSlider from 'react-native-app-intro-slider';
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/Feather';
 import NextIcon from 'react-native-vector-icons/MaterialIcons';
+import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import Colors from '../../constants/Colors';
+import fonts from '../../constants/fonts';
 
 const slides = [
   {
@@ -39,7 +41,11 @@ export default ({setShowRealApp}) => {
         end={{x: 0, y: 0}}
         colors={[Colors.primaryGradient, Colors.secondaryGradient]}
         style={styles.linearGradient}>
-        <View style={styles.slide}>
+        <View
+          style={[
+            styles.slide,
+            {marginTop: item.key === 3 ? hp('61%') : hp('40%')},
+          ]}>
           <Text style={styles.title}>{item.title}</Text>
           <Text style={styles.text}>{item.text}</Text>
           {item.key !== 3 && (
@@ -68,7 +74,7 @@ export default ({setShowRealApp}) => {
 
         {item.key === 3 && (
           <View style={styles.slideThreeContent}>
-            <Icon name="check-circle" color="white" size={50} />
+            <Icon name="check-circle" color="white" size={hp('7')} />
             <Text style={styles.allSetText}>ALL SET !</Text>
 
             <Text onPress={() => setShowRealApp(true)} style={styles.start}>
@@ -95,13 +101,13 @@ export default ({setShowRealApp}) => {
 
   return (
     <>
-      {/* <StatusBar backgroundColor={Colors.primaryGradient} /> */}
       <LinearGradient
         colors={[Colors.primaryGradient, Colors.secondaryGradient]}>
         <StatusBar translucent={true} backgroundColor={'transparent'} />
       </LinearGradient>
       <AppIntroSlider
         data={slides}
+        keyExtractor={item => item.key.toString()}
         renderItem={_renderItem}
         dotClickEnabled={false}
         dotStyle={{opacity: 0}}
@@ -120,60 +126,60 @@ var styles = StyleSheet.create({
     flex: 1,
     paddingLeft: 15,
     paddingRight: 15,
-    borderRadius: 5,
   },
 
   slide: {
     flex: 1,
-    marginTop: '40%',
     justifyContent: 'center',
     alignItems: 'center',
   },
   title: {
     color: 'white',
-    fontFamily: 'Poppins-Italic',
-    fontSize: 18,
-    lineHeight: 18,
+    fontFamily: fonts.FONT_BOLD,
+    fontSize: 14,
+    lineHeight: 21,
   },
   text: {
+    fontFamily: fonts.FONT_REGULAR,
     color: 'white',
     marginTop: 10,
-    fontSize: 14,
+    fontSize: 12,
     lineHeight: 18,
     textAlign: 'center',
   },
   nextButton: {
     color: 'white',
-    fontSize: 16,
+    fontSize: 12,
+    lineHeight: 18,
     marginTop: 10,
+    fontFamily: fonts.FONT_REGULAR,
   },
   slideThreeContent: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    bottom: 0,
-    justifyContent: 'center',
+    flex: 1,
     alignItems: 'center',
-    marginBottom: 100,
   },
   skipContainer: {
     flex: 1,
   },
   skipText: {
-    fontSize: 16,
     color: 'white',
-    opacity: 0.5,
+    fontSize: 12,
+    lineHeight: 18,
     marginTop: 10,
+    fontFamily: fonts.FONT_REGULAR,
+    opacity: 0.5,
   },
   allSetText: {
-    marginTop: 10,
-    fontSize: 20,
+    marginTop: 5,
+    fontSize: 18,
+    lineHeight: 27,
     color: 'white',
-    marginBottom: 40,
+    marginBottom: 13,
+    fontFamily: fonts.FONT_REGULAR,
   },
   paginationContainer: {
     flexDirection: 'row',
-    marginTop: 10,
+    marginTop: '5%',
     justifyContent: 'center',
   },
   pagination: {
@@ -184,9 +190,11 @@ var styles = StyleSheet.create({
     marginHorizontal: 5,
   },
   start: {
-    fontSize: 25,
+    fontSize: 22,
+    lineHeight: 33,
     color: 'white',
     borderBottomColor: 'white',
     borderBottomWidth: 1,
+    fontFamily: fonts.FONT_REGULAR,
   },
 });

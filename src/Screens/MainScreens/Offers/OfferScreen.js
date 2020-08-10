@@ -1,38 +1,43 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, View, FlatList} from 'react-native';
+import {StyleSheet, Text, View, FlatList, SafeAreaView} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {Icon, Card} from 'react-native-elements';
 import Colors from '../../../constants/Colors';
+import fonts from '../../../constants/fonts';
 import UserCircle from 'react-native-vector-icons/EvilIcons';
-import FilterIcon from 'react-native-vector-icons/Ionicons';
 
 const offers = [
   {
-    image: require('../../../../assests/images/burderanddrink.jpg'),
+    id: 1,
+    image: require('../../../../assets/images/burderanddrink.jpg'),
     title: '1 meal free',
     subtitle: `make your order of RS. 1000 and you will get 1 meal for free. *tearm and conditions apply`,
     status: 'locked',
   },
   {
-    image: require('../../../../assests/images/burderanddrink.jpg'),
+    id: 2,
+    image: require('../../../../assets/images/burderanddrink.jpg'),
     title: '1 meal free',
     subtitle: `make your order of RS. 1000 and you will get 1 meal for free. *tearm and conditions apply`,
     status: 'locked',
   },
   {
-    image: require('../../../../assests/images/burderanddrink.jpg'),
+    id: 3,
+    image: require('../../../../assets/images/burderanddrink.jpg'),
     title: '1 meal free',
     subtitle: `make your order of RS. 1000 and you will get 1 meal for free. *tearm and conditions apply`,
     status: 'locked',
   },
   {
-    image: require('../../../../assests/images/burderanddrink.jpg'),
+    id: 4,
+    image: require('../../../../assets/images/burderanddrink.jpg'),
     title: '1 meal free',
     subtitle: `make your order of RS. 1000 and you will get 1 meal for free. *tearm and conditions apply`,
     status: 'locked',
   },
   {
-    image: require('../../../../assests/images/burderanddrink.jpg'),
+    id: 5,
+    image: require('../../../../assets/images/burderanddrink.jpg'),
     title: '1 meal free',
     subtitle: `make your order of RS. 1000 and you will get 1 meal for free. *tearm and conditions apply`,
     status: 'locked',
@@ -45,7 +50,7 @@ const UserMenu = ({navigation}) => {
 
   const renderOffers = item => {
     return (
-      <View style={styles.orderCardContainer}>
+      <View style={styles.orderCardContainer} key={item.id}>
         <View style={styles.leftContainer}>
           <Card
             containerStyle={styles.item}
@@ -65,7 +70,7 @@ const UserMenu = ({navigation}) => {
   };
 
   return (
-    <>
+    <SafeAreaView style={{flex: 1}}>
       <LinearGradient
         start={{x: 0.4, y: 0}}
         end={{x: 1, y: 0.1}}
@@ -80,7 +85,13 @@ const UserMenu = ({navigation}) => {
             </Text>
           </View>
           <View style={styles.rightIcons}>
-            <Icon type="antdesign" name="setting" color="white" size={25} />
+            <Icon
+              type="antdesign"
+              name="setting"
+              color="white"
+              size={25}
+              onPress={() => navigation.navigate('Settings')}
+            />
             <Icon
               type="antdesign"
               name="close"
@@ -98,7 +109,7 @@ const UserMenu = ({navigation}) => {
           />
         </Card>
       </LinearGradient>
-    </>
+    </SafeAreaView>
   );
 };
 
@@ -139,6 +150,7 @@ const styles = StyleSheet.create({
     lineHeight: 30,
     color: '#F9F7F8',
     marginLeft: 5,
+    fontFamily: fonts.FONT_REGULAR,
   },
   rightIcons: {
     flexDirection: 'row',
@@ -161,10 +173,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   firstName: {
-    fontWeight: 'bold',
     fontSize: 20,
     lineHeight: 30,
     color: '#F9F7F8',
+    fontFamily: fonts.FONT_BOLD,
   },
   orderCardContainer: {
     flex: 1,
@@ -207,16 +219,19 @@ const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 24,
     color: '#999999',
+    fontFamily: fonts.FONT_REGULAR,
   },
   subtitleText: {
     fontSize: 12,
     lineHeight: 18,
     color: '#535151',
+    fontFamily: fonts.FONT_REGULAR,
   },
   termText: {
     fontSize: 12,
     lineHeight: 18,
     color: Colors.primaryGradient,
+    fontFamily: fonts.FONT_REGULAR,
   },
 });
 export default UserMenu;

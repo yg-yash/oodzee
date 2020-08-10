@@ -16,9 +16,11 @@ const Stack = createStackNavigator();
 const DashboardStackNavigator = () => (
   <Stack.Navigator
     initialRouteName="Dashboard"
-    screenOptions={{headerShown: false}}>
+    screenOptions={{
+      headerShown: false,
+    }}>
     <Stack.Screen name="Dashboard" component={DashboardScreen} />
-    <Stack.Screen name="FoodDetail" component={FoodDetailScreen} />
+    <Stack.Screen name="Food Detail" component={FoodDetailScreen} />
     <Stack.Screen name="ThankYou" component={ThankYouScreen} />
     <Stack.Screen name="PaymentData" component={PaymentDataSceen} />
     <Stack.Screen name="Payment" component={PaymentScreen} />

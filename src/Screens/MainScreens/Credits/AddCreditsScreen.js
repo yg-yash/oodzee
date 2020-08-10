@@ -8,12 +8,19 @@ import {
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Colors from '../../../constants/Colors';
+import fonts from '../../../constants/fonts';
 
 const AddCreditsScreen = ({navigation}) => {
   useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: true,
+      headerTitle: 'Credits',
       headerTitleAlign: 'center',
+      headerTitleStyle: {
+        fontFamily: fonts.FONT_REGULAR,
+        fontSize: 20,
+        lineHeight: 30,
+      },
     });
   }, [navigation]);
   return (
@@ -78,7 +85,7 @@ const styles = StyleSheet.create({
     letterSpacing: 2,
     textTransform: 'uppercase',
     color: 'white',
-    fontWeight: 'bold',
+    fontFamily: fonts.FONT_BOLD,
   },
   smallText: {
     fontSize: 12,
@@ -86,14 +93,17 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: 'white',
     marginTop: 20,
+    fontFamily: fonts.FONT_REGULAR,
   },
   input: {
     marginTop: 70,
-    width: 227,
-    height: 50,
+    width: '70%',
     borderBottomColor: 'white',
     borderBottomWidth: 1,
     color: 'white',
+    fontSize: 12,
+    lineHeight: 28,
+    fontFamily: fonts.FONT_REGULAR,
   },
   buttonContainer: {
     marginTop: 30,
@@ -103,21 +113,24 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.27,
+    shadowRadius: 4.65,
+
+    elevation: 6,
   },
   btnText: {
     color: Colors.primaryGradient,
     textAlign: 'center',
     fontSize: 14,
     lineHeight: 21,
-    fontWeight: 'bold',
     letterSpacing: 2,
     textTransform: 'uppercase',
-    fontFamily: 'Poppins',
-    shadowColor: 'rgba(0, 0, 0, 0.1)',
-    shadowOpacity: 0.8,
-    elevation: 6,
-    shadowRadius: 15,
-    shadowOffset: {width: 1, height: 13},
+    fontFamily: fonts.FONT_BOLD,
   },
 });
 

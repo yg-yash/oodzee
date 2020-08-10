@@ -29,7 +29,7 @@ const HelpCenterScreen = ({navigation}) => {
         <View style={styles.avatarContainer}>
           <Avatar
             size={35}
-            source={require('../../../../assests/images/usericon2.png')}
+            source={require('../../../../assets/images/usericon2.png')}
           />
           <View>
             <Text style={styles.greyText}>
@@ -61,19 +61,19 @@ const HelpCenterScreen = ({navigation}) => {
           <TouchableOpacity>
             <Avatar
               rounded
-              source={require('../../../../assests/images/emojis/sademoteicon.png')}
+              source={require('../../../../assets/images/emojis/sademoteicon.png')}
             />
           </TouchableOpacity>
           <TouchableOpacity>
             <Avatar
               rounded
-              source={require('../../../../assests/images/emojis/whateveremoteicon.png')}
+              source={require('../../../../assets/images/emojis/whateveremoteicon.png')}
             />
           </TouchableOpacity>
           <TouchableOpacity>
             <Avatar
               rounded
-              source={require('../../../../assests/images/emojis/grinningemoji.png')}
+              source={require('../../../../assets/images/emojis/grinningemoji.png')}
             />
           </TouchableOpacity>
         </View>

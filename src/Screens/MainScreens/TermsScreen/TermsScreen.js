@@ -4,86 +4,87 @@ import {
   Text,
   View,
   Image,
-  Keyboard,
   TouchableWithoutFeedback,
-  StatusBar,
+  SafeAreaView,
+  ScrollView,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import BackIcon from 'react-native-vector-icons/Ionicons';
 import {Button, CheckBox} from 'react-native-elements';
 import Colors from '../../../constants/Colors';
+import fonts from '../../../constants/fonts';
 
 const TermScreen = ({navigation}) => {
   const [termCheck, setTermCheck] = useState(false);
   return (
-    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-      <View style={styles.screen}>
-        <StatusBar backgroundColor={Colors.primaryGradient} />
-        <View style={styles.logoContainer}>
-          <View style={styles.backButtonContainer}>
-            <Button
-              type="clear"
-              title="Back"
-              titleStyle={styles.backText}
-              buttonStyle={styles.backButton}
-              onPress={() => navigation.goBack()}
-              icon={
-                <BackIcon
-                  name="ios-arrow-back"
-                  color="#999999"
-                  style={styles.backIcon}
-                />
-              }
-            />
-          </View>
+    <SafeAreaView style={{flex: 1}}>
+      <ScrollView style={{flex: 1}} contentContainerStyle={{flexGrow: 1}}>
+        <View style={styles.screen}>
+          <View style={styles.logoContainer}>
+            <View style={styles.backButtonContainer}>
+              <Button
+                type="clear"
+                title="Back"
+                titleStyle={styles.backText}
+                buttonStyle={styles.backButton}
+                onPress={() => navigation.goBack()}
+                icon={
+                  <BackIcon
+                    name="ios-arrow-back"
+                    color="#999999"
+                    style={styles.backIcon}
+                  />
+                }
+              />
+            </View>
 
-          <Image
-            source={require('../../../../assests/images/8.png')}
-            style={styles.logoImage}
-            resizeMode={'center'}
-          />
-        </View>
-        <View style={styles.mainContent}>
-          <View style={styles.textContainer}>
-            <Text style={styles.mainText}>Terms of service</Text>
-            <Text style={styles.secondaryText}>
-              Please confirm that you agree to our Terms of Service and Privacy
-              policy:
-            </Text>
-          </View>
-          <View style={styles.termCheckContainer}>
-            <CheckBox
-              checked={termCheck}
-              checkedColor={Colors.primaryGradient}
-              onPress={() => setTermCheck(value => !value)}
+            <Image
+              source={require('../../../../assets/images/8.png')}
+              style={styles.logoImage}
+              resizeMode={'center'}
             />
-            <View style={{flexDirection: 'row', flexWrap: 'wrap'}}>
-              <Text style={styles.agreeText}>I agree to the </Text>
-              <Text
-                style={[
-                  styles.agreeText,
-                  styles.gradientText,
-                ]}>{`Terms & Conditions `}</Text>
-              <Text style={styles.agreeText}>and the </Text>
-              <Text style={[styles.agreeText, styles.gradientText]}>
-                Privacy Policy
+          </View>
+          <View style={styles.mainContent}>
+            <View style={styles.textContainer}>
+              <Text style={styles.mainText}>Terms of service</Text>
+              <Text style={styles.secondaryText}>
+                Please confirm that you agree to our Terms of Service and
+                Privacy policy:
               </Text>
             </View>
+            <View style={styles.termCheckContainer}>
+              <CheckBox
+                checked={termCheck}
+                checkedColor={Colors.primaryGradient}
+                onPress={() => setTermCheck(value => !value)}
+              />
+              <View style={{}}>
+                <Text style={styles.agreeText}>
+                  I agree to the{' '}
+                  <Text
+                    style={
+                      styles.gradientText
+                    }>{`Terms & Conditions `}</Text>{' '}
+                  and the{'\n'}
+                  <Text style={styles.gradientText}>{`Privacy Policy`}</Text>
+                </Text>
+              </View>
+            </View>
+            <TouchableWithoutFeedback
+              disabled={!termCheck}
+              onPress={() => navigation.navigate('Dashboard')}>
+              <LinearGradient
+                start={{x: 0.5, y: 0.5}}
+                end={{x: 1, y: 0}}
+                colors={[Colors.primaryGradient, Colors.secondaryGradient]}
+                style={styles.gradient}>
+                <Text style={styles.btnText}>Approve</Text>
+              </LinearGradient>
+            </TouchableWithoutFeedback>
           </View>
-          <TouchableWithoutFeedback
-            disabled={!termCheck}
-            onPress={() => navigation.navigate('Dashboard')}>
-            <LinearGradient
-              start={{x: 0.5, y: 0.5}}
-              end={{x: 1, y: 0}}
-              colors={[Colors.primaryGradient, Colors.secondaryGradient]}
-              style={styles.gradient}>
-              <Text style={styles.btnText}>Approve</Text>
-            </LinearGradient>
-          </TouchableWithoutFeedback>
         </View>
-      </View>
-    </TouchableWithoutFeedback>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
@@ -101,8 +102,9 @@ const styles = StyleSheet.create({
   backText: {
     color: '#999999',
     fontSize: 12,
+    lineHeight: 18,
+    fontFamily: fonts.FONT_REGULAR,
   },
-  backButton: {},
 
   backIcon: {marginHorizontal: 10, marginTop: 2},
 
@@ -127,7 +129,9 @@ const styles = StyleSheet.create({
   },
   mainText: {
     fontSize: 18,
-    fontWeight: 'bold',
+    lineHeight: 27,
+
+    fontFamily: fonts.FONT_BOLD,
     marginBottom: 5,
   },
   secondaryText: {
@@ -135,6 +139,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 15,
     fontSize: 16,
     lineHeight: 24,
+    fontFamily: fonts.FONT_REGULAR,
   },
   termCheckContainer: {
     flexDirection: 'row',
@@ -147,6 +152,7 @@ const styles = StyleSheet.create({
   agreeText: {
     fontSize: 12,
     lineHeight: 18,
+    fontFamily: fonts.FONT_REGULAR,
   },
   gradient: {
     width: '90%',
@@ -154,15 +160,23 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     justifyContent: 'center',
     alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   btnText: {
     textAlign: 'center',
     color: 'white',
     fontSize: 14,
-    fontWeight: 'bold',
     lineHeight: 21,
     letterSpacing: 2,
     textTransform: 'uppercase',
+    fontFamily: fonts.FONT_BOLD,
   },
   gradientText: {
     color: Colors.primaryGradient,

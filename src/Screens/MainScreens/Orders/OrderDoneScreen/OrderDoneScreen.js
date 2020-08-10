@@ -7,63 +7,69 @@ import {
   Platform,
   TextInput,
   TouchableWithoutFeedback,
+  SafeAreaView,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Colors from '../../../../constants/Colors';
+import fonts from '../../../../constants/fonts';
 import {Card, Icon} from 'react-native-elements';
 
 const OrderDoneScreen = ({navigation}) => {
   return (
-    <LinearGradient
-      start={{x: 0, y: 0.4}}
-      end={{x: 0.2, y: 0}}
-      colors={[Colors.primaryGradient, Colors.secondaryGradient]}
-      style={styles.linearGradient}>
-      <View style={styles.centerContainer}>
-        <Card containerStyle={styles.card}>
-          <View style={styles.upperCardContainer}>
-            <View style={styles.iconContainer}>
-              <Icon
-                type={Platform.OS === 'android' ? 'materialicons' : 'ionicons'}
-                name={Platform.OS === 'android' ? 'close' : 'ios-close'}
-                color={Colors.primaryGradient}
-                size={20}
-                onPress={() => navigation.goBack()}
-              />
-            </View>
-            <View style={styles.mainContaier}>
-              <View style={styles.firstContent}>
-                <Text style={styles.itemText}>Draggen Burger</Text>
-                <Text style={styles.recipeText}>
-                  Fresh bread, Capsicum, Tometo, Onion
-                </Text>
+    <SafeAreaView style={{flex: 1}}>
+      <LinearGradient
+        start={{x: 0, y: 0.4}}
+        end={{x: 0.2, y: 0}}
+        colors={[Colors.primaryGradient, Colors.secondaryGradient]}
+        style={styles.linearGradient}>
+        <View style={styles.centerContainer}>
+          <Card containerStyle={styles.card}>
+            <View style={styles.upperCardContainer}>
+              <View style={styles.iconContainer}>
+                <Icon
+                  type={
+                    Platform.OS === 'android' ? 'materialicons' : 'ionicons'
+                  }
+                  name={Platform.OS === 'android' ? 'close' : 'ios-close'}
+                  color={Colors.primaryGradient}
+                  size={20}
+                  onPress={() => navigation.goBack()}
+                />
               </View>
-            </View>
-            <View style={styles.otpContainer}>
-              <Text style={styles.otpText}>Enter OTP</Text>
-            </View>
-            <View style={styles.otpInputContainer}>
-              <TextInput
-                style={styles.otpInput}
-                placeholder="0"
-                maxLength={1}
-              />
-              <TextInput style={styles.otpInput} placeholder="0" />
-              <TextInput style={styles.otpInput} placeholder="0" />
-              <TextInput style={styles.otpInput} placeholder="0" />
-            </View>
-            <TouchableWithoutFeedback
-              onPress={() => navigation.navigate('OrderDoneComplete')}>
-              <View style={styles.buttonContainer}>
-                <View style={styles.button}>
-                  <Text style={styles.submitText}>SUBMIT</Text>
+              <View style={styles.mainContaier}>
+                <View style={styles.firstContent}>
+                  <Text style={styles.itemText}>Draggen Burger</Text>
+                  <Text style={styles.recipeText}>
+                    Fresh bread, Capsicum, Tometo, Onion
+                  </Text>
                 </View>
               </View>
-            </TouchableWithoutFeedback>
-          </View>
-        </Card>
-      </View>
-    </LinearGradient>
+              <View style={styles.otpContainer}>
+                <Text style={styles.otpText}>Enter OTP</Text>
+              </View>
+              <View style={styles.otpInputContainer}>
+                <TextInput
+                  style={styles.otpInput}
+                  placeholder="0"
+                  maxLength={1}
+                />
+                <TextInput style={styles.otpInput} placeholder="0" />
+                <TextInput style={styles.otpInput} placeholder="0" />
+                <TextInput style={styles.otpInput} placeholder="0" />
+              </View>
+              <TouchableWithoutFeedback
+                onPress={() => navigation.navigate('OrderDoneComplete')}>
+                <View style={styles.buttonContainer}>
+                  <View style={styles.button}>
+                    <Text style={styles.submitText}>SUBMIT</Text>
+                  </View>
+                </View>
+              </TouchableWithoutFeedback>
+            </View>
+          </Card>
+        </View>
+      </LinearGradient>
+    </SafeAreaView>
   );
 };
 
@@ -82,6 +88,15 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     padding: 0,
     margin: 0,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.27,
+    shadowRadius: 4.65,
+
+    elevation: 6,
   },
   upperCardContainer: {
     paddingTop: 10,
@@ -95,12 +110,12 @@ const styles = StyleSheet.create({
   },
   itemText: {
     textAlign: 'center',
-    fontFamily: 'Poppins',
+    fontFamily: fonts.FONT_REGULAR,
     fontSize: 20,
     lineHeight: 30,
   },
   recipeText: {
-    fontFamily: 'Poppins',
+    fontFamily: fonts.FONT_REGULAR,
     fontSize: 12,
     lineHeight: 18,
     color: '#999999',
@@ -116,6 +131,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 21,
     marginBottom: 12,
+    fontFamily: fonts.FONT_REGULAR,
   },
   otpInputContainer: {
     flexDirection: 'row',
@@ -130,6 +146,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     color: '#999999',
     fontSize: 14,
+    fontFamily: fonts.FONT_REGULAR,
     lineHeight: 21,
   },
   buttonContainer: {
@@ -146,18 +163,22 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 40,
     paddingHorizontal: 30,
-    shadowColor: 'rgba(0, 0, 0, 0.1)',
-    shadowOpacity: 0.8,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.27,
+    shadowRadius: 4.65,
+
     elevation: 6,
-    shadowRadius: 15,
-    shadowOffset: {width: 1, height: 13},
   },
   submitText: {
     color: Colors.primaryGradient,
     fontSize: 14,
     lineHeight: 21,
     letterSpacing: 2,
-    fontWeight: 'bold',
+    fontFamily: fonts.FONT_BOLD,
   },
 });
 

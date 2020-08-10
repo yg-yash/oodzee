@@ -6,15 +6,19 @@ import {
   TextInput,
   TouchableWithoutFeedback,
   TouchableOpacity,
+  Keyboard,
   Text,
+  SafeAreaView,
 } from 'react-native';
 import {TabView, TabBar} from 'react-native-tab-view';
 import LinearGradient from 'react-native-linear-gradient';
-import {Icon, Card} from 'react-native-elements';
+import {Icon} from 'react-native-elements';
 import MapView, {Marker} from 'react-native-maps';
 import BottomSheet from 'reanimated-bottom-sheet';
+import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Colors from '../../../constants/Colors';
+import fonts from '../../../constants/fonts';
 import HomeScreen from './DashboardTabScreens/HomeScreen';
 import FoodScreen from './DashboardTabScreens/FoodScreen';
 import HistoryScreen from './DashboardTabScreens/HistoryScreen';
@@ -63,11 +67,36 @@ const Dashboard = ({navigation}) => {
       </View>
       <View style={styles.rating}>
         <View style={styles.ratingIcons}>
-          <Icon type="antdesign" name="star" color={'#FFC107'} size={20} />
-          <Icon type="antdesign" name="star" color={'#FFC107'} size={20} />
-          <Icon type="antdesign" name="star" color={'#FFC107'} size={20} />
-          <Icon type="antdesign" name="star" color={'#FFC107'} size={20} />
-          <Icon type="antdesign" name="staro" color={'#FFC107'} size={20} />
+          <Icon
+            type="antdesign"
+            name="star"
+            color={'#FFC107'}
+            size={hp('2.5%')}
+          />
+          <Icon
+            type="antdesign"
+            name="star"
+            color={'#FFC107'}
+            size={hp('2.5%')}
+          />
+          <Icon
+            type="antdesign"
+            name="star"
+            color={'#FFC107'}
+            size={hp('2.5%')}
+          />
+          <Icon
+            type="antdesign"
+            name="star"
+            color={'#FFC107'}
+            size={hp('2.5%')}
+          />
+          <Icon
+            type="antdesign"
+            name="staro"
+            color={'#FFC107'}
+            size={hp('2.5%')}
+          />
         </View>
       </View>
     </TouchableOpacity>
@@ -84,7 +113,7 @@ const Dashboard = ({navigation}) => {
           return (
             <MaterialCommunityIcons
               name="home"
-              size={30}
+              size={hp('4%')}
               color={focused ? Colors.primaryGradient : '#999999'}
             />
           );
@@ -92,7 +121,7 @@ const Dashboard = ({navigation}) => {
           return (
             <MaterialCommunityIcons
               name="food-fork-drink"
-              size={30}
+              size={hp('4%')}
               color={focused ? Colors.primaryGradient : '#999999'}
             />
           );
@@ -100,13 +129,13 @@ const Dashboard = ({navigation}) => {
           return focused ? (
             <MaterialCommunityIcons
               name="cards-heart"
-              size={30}
+              size={hp('4%')}
               color={Colors.primaryGradient}
             />
           ) : (
             <MaterialCommunityIcons
               name="heart-outline"
-              size={30}
+              size={hp('4%')}
               color="#999999"
             />
           );
@@ -128,82 +157,88 @@ const Dashboard = ({navigation}) => {
   );
 
   return (
-    <LinearGradient
-      start={{x: 0.4, y: 0}}
-      end={{x: 1, y: 0.1}}
-      colors={[Colors.primaryGradient, Colors.secondaryGradient]}
-      style={styles.screen}>
-      <View style={styles.iconsContainer}>
-        <TouchableWithoutFeedback onPress={() => navigation.openDrawer()}>
-          <Icon
-            type={Platform.OS === 'android' ? 'materialicon' : 'ionicons'}
-            name={Platform.OS === 'android' ? 'menu' : 'ios-menu'}
-            color="white"
-            size={25}
-            style={styles.leftIcon}
-          />
-        </TouchableWithoutFeedback>
-        <View style={styles.rightIcons}>
-          <Icon type="feather" name="sliders" color="white" size={25} />
-          <Icon
-            type="antdesign"
-            name="shoppingcart"
-            color="white"
-            size={25}
-            onPress={() => navigation.navigate('FoodDetail')}
-          />
-        </View>
-      </View>
-      <View style={styles.container}>
-        <MapView
-          initialRegion={{
-            latitude: 28.8386,
-            longitude: 78.7733,
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421,
-          }}
-          style={styles.mapContainer}>
-          <Marker coordinate={{latitude: 28.8386, longitude: 78.7733}} />
-        </MapView>
-        <View style={styles.floatCard}>
-          <View style={styles.inputContainer}>
-            <Icon
-              type={Platform.OS === 'android' ? 'materialicons' : 'ionicons'}
-              name={Platform.OS === 'android' ? 'search' : 'ios-search'}
-              size={25}
-              color="#999999"
-              style={styles.inputLogo}
-            />
-            <TextInput
-              value={searchValue}
-              onChangeText={value => setSearchValue(value)}
-              placeholder="Search your location"
-              style={[styles.input]}
-            />
+    <SafeAreaView style={{flex: 1}}>
+      <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+        <LinearGradient
+          start={{x: 0.4, y: 0}}
+          end={{x: 1, y: 0.1}}
+          colors={[Colors.primaryGradient, Colors.secondaryGradient]}
+          style={styles.screen}>
+          <View style={styles.iconsContainer}>
+            <TouchableWithoutFeedback onPress={() => navigation.openDrawer()}>
+              <Icon
+                type={Platform.OS === 'android' ? 'materialicon' : 'ionicons'}
+                name={Platform.OS === 'android' ? 'menu' : 'ios-menu'}
+                color="white"
+                size={25}
+                style={styles.leftIcon}
+              />
+            </TouchableWithoutFeedback>
+            <View style={styles.rightIcons}>
+              <Icon type="feather" name="sliders" color="white" size={25} />
+              <Icon
+                type="antdesign"
+                name="shoppingcart"
+                color="white"
+                size={25}
+                onPress={() => navigation.navigate('Food Detail')}
+              />
+            </View>
           </View>
-          <View style={styles.circleSend}>
-            <Icon
-              type="feather"
-              name="send"
-              size={25}
-              color={Colors.primaryGradient}
-            />
-          </View>
-        </View>
+          <View style={styles.container}>
+            <MapView
+              initialRegion={{
+                latitude: 28.8386,
+                longitude: 78.7733,
+                latitudeDelta: 0.0922,
+                longitudeDelta: 0.0421,
+              }}
+              style={styles.mapContainer}>
+              <Marker coordinate={{latitude: 28.8386, longitude: 78.7733}} />
+            </MapView>
+            <View style={styles.floatCard}>
+              <View style={styles.inputContainer}>
+                <Icon
+                  type={
+                    Platform.OS === 'android' ? 'materialicons' : 'ionicons'
+                  }
+                  name={Platform.OS === 'android' ? 'search' : 'ios-search'}
+                  size={25}
+                  color="#999999"
+                  style={styles.inputLogo}
+                />
+                <TextInput
+                  value={searchValue}
+                  onChangeText={value => setSearchValue(value)}
+                  placeholder="Search your location"
+                  style={[styles.input]}
+                />
+              </View>
+              <View style={styles.circleSend}>
+                <Icon
+                  type="feather"
+                  name="send"
+                  size={25}
+                  color={Colors.primaryGradient}
+                />
+              </View>
+            </View>
 
-        <>
-          <BottomSheet
-            ref={refRBSheet}
-            snapPoints={[650, 250, 0]}
-            initialSnap={1}
-            renderContent={renderContent}
-            onCloseEnd={() => refRBSheet.current.snapTo(1)}
-            renderHeader={() => showOrder && renderCurrentOrder()}
-          />
-          <Text />
-        </>
-      </View>
-    </LinearGradient>
+            <>
+              <BottomSheet
+                ref={refRBSheet}
+                snapPoints={[hp('80'), hp('30'), 0]}
+                initialSnap={1}
+                renderContent={renderContent}
+                onCloseEnd={() => refRBSheet.current.snapTo(1)}
+                renderHeader={() => showOrder && renderCurrentOrder()}
+              />
+              <Text />
+            </>
+          </View>
+        </LinearGradient>
+      </TouchableWithoutFeedback>
+    </SafeAreaView>
   );
 };
 
@@ -240,7 +275,7 @@ const styles = StyleSheet.create({
     paddingTop: 10,
   },
   iconsContainer: {
-    marginTop: 10,
+    marginTop: hp('1%'),
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -283,6 +318,10 @@ const styles = StyleSheet.create({
   input: {
     color: '#999999',
     flex: 1,
+    fontSize: 12,
+    lineHeight: 18,
+    fontFamily: fonts.FONT_REGULAR,
+    zIndex: 0,
   },
   circleSend: {
     marginLeft: 20,
@@ -300,6 +339,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderTopStartRadius: 25,
     borderTopEndRadius: 25,
+    zIndex: 1,
   },
   currentOrder: {
     padding: 20,
@@ -322,6 +362,7 @@ const styles = StyleSheet.create({
   currentOrderText: {
     fontSize: 14,
     lineHeight: 21,
+    fontFamily: fonts.FONT_REGULAR,
   },
 });
 export default Dashboard;

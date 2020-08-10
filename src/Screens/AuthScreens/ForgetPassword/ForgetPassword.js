@@ -7,81 +7,86 @@ import {
   TextInput,
   Keyboard,
   TouchableWithoutFeedback,
-  StatusBar,
+  SafeAreaView,
+  ScrollView,
 } from 'react-native';
 import MailIcon from 'react-native-vector-icons/Feather';
 import BackIcon from 'react-native-vector-icons/Ionicons';
 import {Button} from 'react-native-elements';
 import Colors from '../../../constants/Colors';
+import fonts from '../../../constants/fonts';
 import LinearGradient from 'react-native-linear-gradient';
 
 const ForgetPasswordScreen = ({navigation}) => {
   const [email, setEmail] = useState('');
   return (
-    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-      <View style={styles.screen}>
-        <StatusBar backgroundColor={Colors.primaryGradient} />
-        <View style={styles.logoContainer}>
-          <View style={styles.backButtonContainer}>
-            <Button
-              type="clear"
-              title="Back"
-              titleStyle={styles.backText}
-              buttonStyle={styles.backButton}
-              onPress={() => navigation.goBack()}
-              icon={
-                <BackIcon
-                  name="ios-arrow-back"
-                  color="#999999"
-                  style={{marginHorizontal: 10, marginTop: 2}}
+    <SafeAreaView style={{flex: 1}}>
+      <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+        <ScrollView style={{flex: 1}} contentContainerStyle={{flexGrow: 1}}>
+          <View style={styles.screen}>
+            <View style={styles.logoContainer}>
+              <View style={styles.backButtonContainer}>
+                <Button
+                  type="clear"
+                  title="Back"
+                  titleStyle={styles.backText}
+                  buttonStyle={styles.backButton}
+                  onPress={() => navigation.goBack()}
+                  icon={
+                    <BackIcon
+                      name="ios-arrow-back"
+                      color="#999999"
+                      style={{marginHorizontal: 10, marginTop: 2}}
+                    />
+                  }
                 />
-              }
-            />
-          </View>
-          <Image
-            source={require('../../../../assests/images/8.png')}
-            style={styles.logoImage}
-            resizeMode={'center'}
-          />
-        </View>
-        <View style={styles.textContainer}>
-          <Text style={styles.signInText}>Forget your password?</Text>
-          <Text style={styles.secondaryText}>
-            No worries,Please enter your registered email address.We will send
-            you an email.
-          </Text>
-        </View>
+              </View>
+              <Image
+                source={require('../../../../assets/images/8.png')}
+                style={styles.logoImage}
+                resizeMode={'center'}
+              />
+            </View>
+            <View style={styles.textContainer}>
+              <Text style={styles.signInText}>Forget your password?</Text>
+              <Text style={styles.secondaryText}>
+                No worries,Please enter your registered email address.We will
+                send you an email.
+              </Text>
+            </View>
 
-        <View style={styles.form}>
-          <View style={styles.inputContainer}>
-            <MailIcon name="mail" size={18} style={styles.inputLogo} />
-            <TextInput
-              value={email}
-              placeholder="Enter your registered email address"
-              onChangeText={text => setEmail(text)}
-              style={styles.input}
-            />
-          </View>
+            <View style={styles.form}>
+              <View style={styles.inputContainer}>
+                <MailIcon name="mail" size={18} style={styles.inputLogo} />
+                <TextInput
+                  value={email}
+                  placeholder="Enter your registered email address"
+                  onChangeText={text => setEmail(text)}
+                  style={styles.input}
+                />
+              </View>
 
-          <LinearGradient
-            start={{x: 0.5, y: 0.5}}
-            end={{x: 1, y: 0}}
-            colors={[Colors.primaryGradient, Colors.secondaryGradient]}
-            style={styles.gradient}>
-            <Text style={styles.btnText}>SEND AN EMAIL </Text>
-          </LinearGradient>
-          <View style={styles.joinContainer}>
-            <Text style={styles.joinText}>Password remembered?</Text>
-            <Button
-              title="Sign in"
-              type="clear"
-              titleStyle={styles.signUpBtn}
-              onPress={() => navigation.goBack()}
-            />
+              <LinearGradient
+                start={{x: 0.5, y: 0.5}}
+                end={{x: 1, y: 0}}
+                colors={[Colors.primaryGradient, Colors.secondaryGradient]}
+                style={styles.gradient}>
+                <Text style={styles.btnText}>SEND AN EMAIL </Text>
+              </LinearGradient>
+              <View style={styles.joinContainer}>
+                <Text style={styles.joinText}>Password remembered?</Text>
+                <Button
+                  title="Sign in"
+                  type="clear"
+                  titleStyle={styles.signUpBtn}
+                  onPress={() => navigation.goBack()}
+                />
+              </View>
+            </View>
           </View>
-        </View>
-      </View>
-    </TouchableWithoutFeedback>
+        </ScrollView>
+      </TouchableWithoutFeedback>
+    </SafeAreaView>
   );
 };
 
@@ -99,9 +104,16 @@ const styles = StyleSheet.create({
   backText: {
     color: '#999999',
     fontSize: 12,
+    lineHeight: 18,
+    fontFamily: fonts.FONT_REGULAR,
   },
-  secondaryText: {width: '80%', fontSize: 16},
-  backButton: {},
+  secondaryText: {
+    width: '80%',
+    fontFamily: fonts.FONT_REGULAR,
+    fontSize: 14,
+    lineHeight: 18,
+  },
+
   logoContainer: {
     flex: 1,
     alignItems: 'center',
@@ -122,6 +134,14 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     justifyContent: 'center',
     alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   form: {
     flex: 2,
@@ -143,31 +163,24 @@ const styles = StyleSheet.create({
   input: {
     marginLeft: '5%',
     color: '#999999',
+    fontSize: 12,
+    lineHeight: 18,
+    fontFamily: fonts.FONT_REGULAR,
   },
   signInText: {
     fontSize: 18,
-    fontWeight: 'bold',
-    top: 0,
+    lineHeight: 27,
+    fontFamily: fonts.FONT_BOLD,
   },
   passwordIcon: {marginRight: 10},
 
-  titleStyle: {
-    textAlign: 'center',
-    color: 'white',
-    letterSpacing: 3,
-  },
-  circleGradient: {
-    margin: 1,
-    backgroundColor: 'white',
-    borderRadius: 5,
-  },
   btnText: {
     color: 'white',
     fontSize: 14,
-    fontWeight: 'bold',
     lineHeight: 21,
     letterSpacing: 2,
     textTransform: 'uppercase',
+    fontFamily: fonts.FONT_BOLD,
   },
   visit: {
     margin: 4,
@@ -216,16 +229,15 @@ const styles = StyleSheet.create({
     bottom: 10,
   },
   joinText: {
-    fontSize: 14,
+    fontSize: 12,
     lineHeight: 18,
-    fontFamily: 'Poppins-Regular',
+    fontFamily: fonts.FONT_REGULAR,
   },
   signUpBtn: {
     color: Colors.primaryGradient,
-    fontWeight: '400',
-    fontSize: 14,
+    fontSize: 12,
     lineHeight: 18,
-    fontFamily: 'Poppins-Regular',
+    fontFamily: fonts.FONT_REGULAR,
   },
 });
 

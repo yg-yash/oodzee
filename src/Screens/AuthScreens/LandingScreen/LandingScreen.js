@@ -2,54 +2,67 @@ import React from 'react';
 import {
   StyleSheet,
   View,
-  Dimensions,
   Image,
   Text,
   StatusBar,
   TouchableWithoutFeedback,
+  TouchableHighlight,
+  ScrollView,
+  SafeAreaView,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Colors from '../../../constants/Colors';
-import {Button} from 'react-native-elements';
+import fonts from '../../../constants/fonts';
 
 export default function LandingScreen({navigation}) {
   return (
-    <View style={styles.screen}>
-      <StatusBar backgroundColor={Colors.primaryGradient} />
-      <LinearGradient
-        start={{x: 0, y: 0.4}}
-        end={{x: 0.2, y: 0}}
-        colors={[Colors.primaryGradient, Colors.secondaryGradient]}
-        style={styles.linearGradient}>
-        <View style={styles.card}>
-          <Image
-            source={require('../../../../assests/images/8.png')}
-            style={styles.backgroundImage}
-          />
-        </View>
-      </LinearGradient>
-      <View style={styles.content}>
-        <Text style={styles.text}>
-          Part of the secret of success in life is to eat what you want to like
-          and let the food fight it out inside
-        </Text>
+    <SafeAreaView style={{flex: 1}}>
+      <ScrollView style={{flex: 1}} contentContainerStyle={{flexGrow: 1}}>
+        <View style={styles.screen}>
+          <StatusBar backgroundColor={Colors.secondaryGradient} />
+          <LinearGradient
+            start={{x: 0, y: 0.4}}
+            end={{x: 0.2, y: 0}}
+            colors={[Colors.primaryGradient, Colors.secondaryGradient]}
+            style={styles.linearGradient}>
+            <View style={styles.card}>
+              <Image
+                source={require('../../../../assets/images/logowhite.png')}
+                style={styles.backgroundImage}
+              />
+            </View>
+          </LinearGradient>
+          <View style={styles.content}>
+            <View
+              style={{
+                flex: 2,
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}>
+              <Text style={styles.text}>
+                Part of the secret of success in life is to eat what you want to
+                like and let the food fight it out inside
+              </Text>
 
-        <TouchableWithoutFeedback onPress={() => navigation.navigate('SignUp')}>
-          <View style={styles.joinBtn}>
-            <Text style={styles.titleStyle}>Join Us !</Text>
+              <TouchableWithoutFeedback
+                onPress={() => navigation.navigate('SignUp')}>
+                <View style={styles.joinBtn}>
+                  <Text style={styles.titleStyle}>Join Us !</Text>
+                </View>
+              </TouchableWithoutFeedback>
+            </View>
+            <View style={styles.signUp}>
+              <Text style={styles.joinText}>Already Joined?</Text>
+              <TouchableHighlight
+                underlayColor={Colors.secondaryGradient}
+                onPress={() => navigation.navigate('SignIn')}>
+                <Text style={styles.signUpBtnText}> Sign In </Text>
+              </TouchableHighlight>
+            </View>
           </View>
-        </TouchableWithoutFeedback>
-        <View style={styles.signUp}>
-          <Text style={styles.joinText}>Already Joined?</Text>
-          <Button
-            title="Sign in"
-            type="clear"
-            titleStyle={styles.signUpBtn}
-            onPress={() => navigation.navigate('SignIn')}
-          />
         </View>
-      </View>
-    </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
@@ -58,30 +71,35 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   linearGradient: {
+    flex: 5,
     paddingLeft: 15,
     paddingRight: 15,
     borderRadius: 5,
-    borderBottomLeftRadius: 45,
-    borderBottomRightRadius: 45,
+    borderBottomLeftRadius: 35,
+    borderBottomRightRadius: 35,
+    elevation: 8,
+    overflow: 'hidden',
+    paddingBottom: 30,
   },
   card: {
+    flex: 1,
     marginTop: 0,
     marginHorizontal: 0,
-    height: Dimensions.get('window').height / 1.4,
     justifyContent: 'center',
     alignItems: 'center',
   },
   backgroundImage: {
-    width: 300,
-    height: 300,
+    width: '50%',
+    height: '30%',
   },
   content: {
     flex: 1,
+    marginTop: 15,
     justifyContent: 'center',
     alignItems: 'center',
   },
   joinBtn: {
-    marginTop: 30,
+    marginTop: 20,
     width: 220,
     height: 50,
     borderRadius: 50,
@@ -100,28 +118,28 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   signUp: {
+    flex: 1,
     flexDirection: 'row',
-    position: 'absolute',
+    justifyContent: 'flex-end',
     alignItems: 'center',
-    bottom: 10,
+    marginBottom: 5,
   },
   joinText: {
-    fontSize: 14,
-    lineHeight: 18,
-    fontFamily: 'Poppins-Regular',
+    fontSize: 12,
+    lineHeight: 28,
+    fontFamily: fonts.FONT_REGULAR,
   },
-  signUpBtn: {
+  signUpBtnText: {
     color: Colors.primaryGradient,
-    fontWeight: '400',
-    fontSize: 14,
+    fontSize: 12,
     lineHeight: 18,
-    fontFamily: 'Poppins-Regular',
+    fontFamily: fonts.FONT_REGULAR,
   },
   text: {
-    marginHorizontal: 60,
+    marginHorizontal: '15%',
     color: '#999999',
-    fontFamily: 'Poppins-Regular',
-    fontSize: 14,
+    fontFamily: fonts.FONT_REGULAR,
+    fontSize: 12,
     lineHeight: 18,
     textAlign: 'center',
   },

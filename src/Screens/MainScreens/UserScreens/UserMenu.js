@@ -6,54 +6,56 @@ import {
   TouchableHighlight,
   TouchableWithoutFeedback,
   ScrollView,
+  SafeAreaView,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {Icon, Card} from 'react-native-elements';
 import Colors from '../../../constants/Colors';
+import fonts from '../../../constants/fonts';
 import UserCircle from 'react-native-vector-icons/EvilIcons';
 import FilterIcon from 'react-native-vector-icons/Ionicons';
 
 const UserMenu = ({navigation}) => {
   return (
-    <>
-      <LinearGradient
-        start={{x: 0.4, y: 0}}
-        end={{x: 1, y: 0.1}}
-        colors={[Colors.primaryGradient, Colors.secondaryGradient]}
-        style={styles.screen}>
-        <View style={styles.iconsContainer}>
-          <UserCircle
-            name="user"
-            color="white"
-            size={40}
-            style={styles.leftIcon}
-          />
-          <View style={styles.rightIcons}>
-            <Icon
-              type="antdesign"
-              name="setting"
+    <SafeAreaView style={{flex: 1}}>
+      <ScrollView style={{flex: 1}} contentContainerStyle={{flexGrow: 1}}>
+        <LinearGradient
+          start={{x: 0.4, y: 0}}
+          end={{x: 1, y: 0.1}}
+          colors={[Colors.primaryGradient, Colors.secondaryGradient]}
+          style={styles.screen}>
+          <View style={styles.iconsContainer}>
+            <UserCircle
+              name="user"
               color="white"
-              size={25}
-              onPress={() => navigation.navigate('Settings')}
+              size={40}
+              style={styles.leftIcon}
             />
-            <Icon
-              type="antdesign"
-              name="close"
-              color="white"
-              size={25}
-              onPress={() => navigation.goBack()}
-            />
+            <View style={styles.rightIcons}>
+              <Icon
+                type="antdesign"
+                name="setting"
+                color="white"
+                size={25}
+                onPress={() => navigation.navigate('Settings')}
+              />
+              <Icon
+                type="antdesign"
+                name="close"
+                color="white"
+                size={25}
+                onPress={() => navigation.goBack()}
+              />
+            </View>
           </View>
-        </View>
 
-        <Card containerStyle={styles.card}>
-          <ScrollView>
+          <Card containerStyle={styles.card}>
             <View style={styles.firstRow}>
               <TouchableWithoutFeedback
                 onPress={() => navigation.navigate('Offer')}>
                 <Card
                   containerStyle={styles.item}
-                  image={require('../../../../assests/images/burderanddrink.jpg')}
+                  image={require('../../../../assets/images/burderanddrink.jpg')}
                   imageProps={{resizeMode: 'contain'}}
                   imageStyle={styles.image}
                   imageWrapperStyle={styles.imageContainer}>
@@ -64,7 +66,7 @@ const UserMenu = ({navigation}) => {
                 onPress={() => navigation.navigate('Offer')}>
                 <Card
                   containerStyle={styles.item}
-                  image={require('../../../../assests/images/muffin.jpg')}
+                  image={require('../../../../assets/images/muffin.jpg')}
                   imageProps={{resizeMode: 'contain'}}
                   imageStyle={styles.image}
                   imageWrapperStyle={styles.imageContainer}>
@@ -75,7 +77,7 @@ const UserMenu = ({navigation}) => {
                 onPress={() => navigation.navigate('Offer')}>
                 <Card
                   containerStyle={styles.item}
-                  image={require('../../../../assests/images/medalarrow.png')}
+                  image={require('../../../../assets/images/medalarrow.png')}
                   imageProps={{resizeMode: 'contain'}}
                   imageStyle={styles.image}
                   imageWrapperStyle={styles.imageContainer}>
@@ -86,7 +88,7 @@ const UserMenu = ({navigation}) => {
                 onPress={() => navigation.navigate('Offer')}>
                 <Card
                   containerStyle={styles.item}
-                  image={require('../../../../assests/images/trophy.png')}
+                  image={require('../../../../assets/images/trophy.png')}
                   imageProps={{resizeMode: 'contain'}}
                   imageStyle={styles.image}
                   imageWrapperStyle={styles.imageContainer}>
@@ -188,10 +190,10 @@ const UserMenu = ({navigation}) => {
                 </View>
               </TouchableHighlight>
             </View>
-          </ScrollView>
-        </Card>
-      </LinearGradient>
-    </>
+          </Card>
+        </LinearGradient>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
@@ -263,6 +265,7 @@ const styles = StyleSheet.create({
     color: '#999999',
     textAlign: 'center',
     width: 60,
+    fontFamily: fonts.FONT_REGULAR,
   },
   image: {
     width: '100%',
@@ -281,9 +284,11 @@ const styles = StyleSheet.create({
     fontSize: 30,
     lineHeight: 45,
     textAlign: 'center',
+    fontFamily: fonts.FONT_REGULAR,
   },
   smallText: {
     fontSize: 16,
+    fontFamily: fonts.FONT_REGULAR,
   },
   thirdRow: {
     paddingTop: 20,
@@ -296,8 +301,9 @@ const styles = StyleSheet.create({
   },
   listItemText: {
     marginLeft: 20,
-    fontSize: 15,
+    fontSize: 14,
     lineHeight: 21,
+    fontFamily: fonts.FONT_REGULAR,
   },
 });
 export default UserMenu;

@@ -8,6 +8,8 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import Colors from '../../../constants/Colors';
+import fonts from '../../../constants/fonts';
+import {Icon} from 'react-native-elements';
 
 const filterList = [
   'Vegetarian',
@@ -23,7 +25,20 @@ const FilterScreen = ({navigation}) => {
   useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: true,
-      headerTitleAlign: 'center',
+      headerTitleAlign: 'left',
+      headerLeft: () => null,
+      headerRight: () => (
+        <Icon
+          type="antdesign"
+          name="close"
+          onPress={() => navigation.goBack()}
+        />
+      ),
+      headerTitleStyle: {
+        fontFamily: fonts.FONT_REGULAR,
+        fontSize: 20,
+        lineHeight: 30,
+      },
     });
   }, [navigation]);
 
@@ -95,11 +110,15 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderTopStartRadius: 15,
     borderTopEndRadius: 15,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 8,
+    },
+    shadowOpacity: 0.44,
+    shadowRadius: 10.32,
+
     elevation: 16,
-    shadowColor: '#999999',
-    shadowOffset: {width: 0, height: 2},
-    shadowOpacity: 0.4,
-    shadowRadius: 6,
     overflow: 'hidden',
   },
   container: {
@@ -117,6 +136,7 @@ const styles = StyleSheet.create({
   itemText: {
     fontSize: 14,
     lineHeight: 21,
+    fontFamily: fonts.FONT_REGULAR,
   },
   listLastItem: {
     paddingVertical: 20,
@@ -141,6 +161,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     lineHeight: 27,
     color: '#999999',
+    fontFamily: fonts.FONT_REGULAR,
   },
 });
 

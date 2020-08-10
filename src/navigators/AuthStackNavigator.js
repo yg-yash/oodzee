@@ -12,7 +12,9 @@ export default function MainStackNavigator() {
   return (
     <Stack.Navigator
       initialRouteName="Landing"
-      screenOptions={{headerShown: false}}>
+      screenOptions={{
+        headerShown: false,
+      }}>
       <Stack.Screen name="Landing" component={LandingPage} />
       <Stack.Screen name="SignIn" component={SignInScreen} />
       <Stack.Screen name="SignUp" component={SignUpScreen} />

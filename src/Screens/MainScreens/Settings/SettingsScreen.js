@@ -5,10 +5,12 @@ import {
   View,
   TouchableHighlight,
   ScrollView,
+  SafeAreaView,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {Icon, Card} from 'react-native-elements';
 import Colors from '../../../constants/Colors';
+import fonts from '../../../constants/fonts';
 import BackIcon from 'react-native-vector-icons/Ionicons';
 import UserEdit from 'react-native-vector-icons/FontAwesome5';
 import ToolsIcon from 'react-native-vector-icons/Octicons';
@@ -16,7 +18,7 @@ import LogoutIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const SettingsScreen = ({navigation}) => {
   return (
-    <>
+    <SafeAreaView style={{flex: 1}}>
       <LinearGradient
         start={{x: 0.4, y: 0}}
         end={{x: 1, y: 0}}
@@ -209,7 +211,7 @@ const SettingsScreen = ({navigation}) => {
           </ScrollView>
         </Card>
       </LinearGradient>
-    </>
+    </SafeAreaView>
   );
 };
 
@@ -226,11 +228,15 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderTopStartRadius: 25,
     borderTopEndRadius: 25,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.27,
+    shadowRadius: 4.65,
+
     elevation: 6,
-    shadowColor: '#999999',
-    shadowOffset: {width: 0, height: 2},
-    shadowOpacity: 0.4,
-    shadowRadius: 6,
     overflow: 'hidden',
   },
   settingTitle: {
@@ -238,6 +244,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     flex: 1.6,
     lineHeight: 30,
+    fontFamily: fonts.FONT_REGULAR,
   },
   iconsContainer: {
     flexDirection: 'row',
@@ -288,20 +295,13 @@ const styles = StyleSheet.create({
     height: '100%',
     borderRadius: 5,
   },
-
   userIdText: {
     fontSize: 16,
     lineHeight: 24,
     color: Colors.primaryGradient,
+    fontFamily: fonts.FONT_REGULAR,
   },
-  boldText: {
-    fontSize: 30,
-    lineHeight: 45,
-    textAlign: 'center',
-  },
-  smallText: {
-    fontSize: 16,
-  },
+
   secondRow: {
     paddingTop: 10,
     paddingHorizontal: 20,
@@ -318,6 +318,7 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     fontSize: 15,
     lineHeight: 21,
+    fontFamily: fonts.FONT_REGULAR,
   },
   aboutText: {
     fontSize: 16,
@@ -325,6 +326,7 @@ const styles = StyleSheet.create({
     color: '#535151',
     textTransform: 'uppercase',
     marginLeft: 15,
+    fontFamily: fonts.FONT_REGULAR,
   },
 });
 export default SettingsScreen;

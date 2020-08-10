@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import {Icon, Avatar} from 'react-native-elements';
 import Colors from '../../../constants/Colors';
+import fonts from '../../../constants/fonts';
 import LinearGradient from 'react-native-linear-gradient';
 
 const FeedbackScreen = ({navigation}) => {
@@ -39,27 +40,27 @@ const FeedbackScreen = ({navigation}) => {
           <Avatar
             containerStyle={styles.avatar}
             size={50}
-            source={require('../../../../assests/images/usericon1.jpg')}
+            source={require('../../../../assets/images/usericon1.jpg')}
           />
           <Avatar
             containerStyle={styles.avatar}
             size={50}
-            source={require('../../../../assests/images/usericon2.png')}
+            source={require('../../../../assets/images/usericon2.png')}
           />
           <Avatar
             containerStyle={styles.avatar}
             size={50}
-            source={require('../../../../assests/images/usericon1.jpg')}
+            source={require('../../../../assets/images/usericon1.jpg')}
           />
           <Avatar
             containerStyle={styles.avatar}
             size={50}
-            source={require('../../../../assests/images/usericon2.png')}
+            source={require('../../../../assets/images/usericon2.png')}
           />
           <Avatar
             containerStyle={styles.avatar}
             size={50}
-            source={require('../../../../assests/images/usericon2.png')}
+            source={require('../../../../assets/images/usericon2.png')}
           />
         </View>
         <TouchableWithoutFeedback
@@ -176,11 +177,14 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderTopStartRadius: 15,
     borderTopEndRadius: 15,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 8,
+    },
+    shadowOpacity: 0.44,
+    shadowRadius: 10.32,
     elevation: 16,
-    shadowColor: '#999999',
-    shadowOffset: {width: 0, height: 2},
-    shadowOpacity: 0.4,
-    shadowRadius: 6,
     overflow: 'hidden',
   },
   container: {
@@ -190,11 +194,13 @@ const styles = StyleSheet.create({
   heading: {
     fontSize: 18,
     lineHeight: 27,
+    fontFamily: fonts.FONT_REGULAR,
   },
   subheading: {
     fontSize: 12,
     lineHeight: 18,
     color: '#999999',
+    fontFamily: fonts.FONT_REGULAR,
   },
   userIconContainer: {
     flexDirection: 'row',
@@ -209,11 +215,20 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     justifyContent: 'center',
     alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.27,
+    shadowRadius: 4.65,
+
+    elevation: 6,
   },
   btnText: {
     color: 'white',
     fontSize: 14,
-    fontWeight: 'bold',
+    fontFamily: fonts.FONT_BOLD,
     lineHeight: 21,
     letterSpacing: 2,
     textTransform: 'uppercase',
@@ -224,10 +239,12 @@ const styles = StyleSheet.create({
   },
   input: {
     borderRadius: 10,
-
     paddingHorizontal: 20,
-    fontFamily: 'Signika-Regular',
     flex: 1,
+    fontFamily: fonts.FONT_BOLD,
+    fontSize: 12,
+    lineHeight: 18,
+    color: '#999999',
   },
   inputContainer: {
     flexDirection: 'row',
@@ -249,7 +266,15 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     justifyContent: 'center',
     alignItems: 'center',
-    elevation: 20,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.27,
+    shadowRadius: 4.65,
+
+    elevation: 6,
   },
   searchContainer: {
     flexDirection: 'row',
@@ -288,12 +313,14 @@ const styles = StyleSheet.create({
     lineHeight: 18,
     color: '#535151',
     paddingHorizontal: 10,
+    fontFamily: fonts.FONT_REGULAR,
   },
 
   headerTitleStyle: {
     fontSize: 20,
     lineHeight: 30,
     marginLeft: 10,
+    fontFamily: fonts.FONT_REGULAR,
   },
 });
 

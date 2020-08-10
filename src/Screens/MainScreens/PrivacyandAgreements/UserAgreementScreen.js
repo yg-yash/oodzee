@@ -2,6 +2,7 @@ import React, {useLayoutEffect, useState} from 'react';
 import {StyleSheet, View, Text, ScrollView} from 'react-native';
 import {Picker} from '@react-native-community/picker';
 import {Icon} from 'react-native-elements';
+import fonts from '../../../constants/fonts';
 
 const UserAgreement = ({navigation}) => {
   const [languages, setLanguages] = useState('english');
@@ -10,6 +11,11 @@ const UserAgreement = ({navigation}) => {
       headerShown: true,
       headerTitleAlign: 'center',
       headerTitle: 'User Agreement',
+      headerTitleStyle: {
+        fontSize: 20,
+        lineHeight: 30,
+        fontFamily: fonts.FONT_REGULAR,
+      },
     });
   }, [navigation]);
 
@@ -111,11 +117,14 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderTopStartRadius: 15,
     borderTopEndRadius: 15,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 8,
+    },
+    shadowOpacity: 0.44,
+    shadowRadius: 10.32,
     elevation: 16,
-    shadowColor: '#999999',
-    shadowOffset: {width: 0, height: 2},
-    shadowOpacity: 0.4,
-    shadowRadius: 6,
     overflow: 'hidden',
   },
   container: {
@@ -134,11 +143,12 @@ const styles = StyleSheet.create({
     lineHeight: 18,
     color: '#999999',
     marginRight: 10,
+    fontFamily: fonts.FONT_REGULAR,
   },
   heading: {
     fontSize: 18,
     lineHeight: 27,
-    fontWeight: 'bold',
+    fontFamily: fonts.FONT_BOLD,
   },
   textContainer: {
     marginTop: 10,
@@ -146,12 +156,14 @@ const styles = StyleSheet.create({
   },
   smallText: {
     marginVertical: 10,
-    textAlign: 'center',
+    fontSize: 10,
+    lineHeight: 15,
+    fontFamily: fonts.FONT_REGULAR,
   },
   smallheading: {
     fontSize: 14,
     lineHeight: 21,
-    fontWeight: 'bold',
+    fontFamily: fonts.FONT_BOLD,
   },
 });
 

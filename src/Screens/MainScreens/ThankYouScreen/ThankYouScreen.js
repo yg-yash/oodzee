@@ -1,29 +1,38 @@
 import React from 'react';
-import {StyleSheet, Text, View, TouchableWithoutFeedback} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableWithoutFeedback,
+  SafeAreaView,
+} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/Feather';
 import Colors from '../../../constants/Colors';
+import fonts from '../../../constants/fonts';
 
 const ThankYouScreen = ({navigation}) => {
   return (
-    <LinearGradient
-      start={{x: 0, y: 0.4}}
-      end={{x: 0.2, y: 0}}
-      colors={[Colors.primaryGradient, Colors.secondaryGradient]}
-      style={styles.linearGradient}>
-      <View style={styles.mainContent}>
-        <Icon name="check-circle" color="white" size={100} />
-        <Text style={styles.placeText}>Your order placed successfully.</Text>
-      </View>
-      <View style={styles.bottomContent}>
-        <Text style={styles.thankText}>Thank You!</Text>
-        <TouchableWithoutFeedback onPress={() => navigation.popToTop()}>
-          <View style={styles.gradient}>
-            <Text style={styles.btnText}>continue shopping</Text>
-          </View>
-        </TouchableWithoutFeedback>
-      </View>
-    </LinearGradient>
+    <SafeAreaView style={{flex: 1}}>
+      <LinearGradient
+        start={{x: 0, y: 0.4}}
+        end={{x: 0.2, y: 0}}
+        colors={[Colors.primaryGradient, Colors.secondaryGradient]}
+        style={styles.linearGradient}>
+        <View style={styles.mainContent}>
+          <Icon name="check-circle" color="white" size={100} />
+          <Text style={styles.placeText}>Your order placed successfully.</Text>
+        </View>
+        <View style={styles.bottomContent}>
+          <Text style={styles.thankText}>Thank You!</Text>
+          <TouchableWithoutFeedback onPress={() => navigation.popToTop()}>
+            <View style={styles.gradient}>
+              <Text style={styles.btnText}>continue shopping</Text>
+            </View>
+          </TouchableWithoutFeedback>
+        </View>
+      </LinearGradient>
+    </SafeAreaView>
   );
 };
 
@@ -44,7 +53,7 @@ const styles = StyleSheet.create({
     lineHeight: 45,
     fontSize: 30,
     textAlign: 'center',
-    fontFamily: 'Poppins',
+    fontFamily: fonts.FONT_REGULAR,
   },
   bottomContent: {
     alignItems: 'center',
@@ -53,10 +62,10 @@ const styles = StyleSheet.create({
   },
   thankText: {
     color: '#ffffff',
-    lineHeight: 45,
-    fontSize: 30,
+    lineHeight: 36,
+    fontSize: 24,
     textAlign: 'center',
-    fontFamily: 'Poppins',
+    fontFamily: fonts.FONT_REGULAR,
     letterSpacing: 2,
     textTransform: 'uppercase',
     bottom: 20,
@@ -68,6 +77,14 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.27,
+    shadowRadius: 4.65,
+    elevation: 6,
   },
   btnText: {
     color: Colors.primaryGradient,
@@ -76,7 +93,7 @@ const styles = StyleSheet.create({
     lineHeight: 21,
     letterSpacing: 2,
     textTransform: 'uppercase',
-    fontFamily: 'Poppins',
+    fontFamily: fonts.FONT_BOLD,
   },
 });
 

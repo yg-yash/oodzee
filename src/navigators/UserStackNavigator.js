@@ -21,6 +21,7 @@ import PersonalisationSettingsScreen from '../Screens/MainScreens/UserScreens/Pe
 import UserAgreementScreen from '../Screens/MainScreens/PrivacyandAgreements/UserAgreementScreen';
 import PrivacyPolicyScreen from '../Screens/MainScreens/PrivacyandAgreements/PrivacyPolicyScreen';
 import SoftwareLicenseScreen from '../Screens/MainScreens/PrivacyandAgreements/SoftwareLicenseScreen';
+import FeedbackConversationScreen from '../Screens/MainScreens/Feedback/FeedbackCoversationScreen';
 
 const Stack = createStackNavigator();
 
@@ -38,7 +39,7 @@ const UserStackNavigator = () => (
     <Stack.Screen name="Offer" component={OfferScreen} />
     <Stack.Screen name="Settings" component={SettingsScreen} />
     <Stack.Screen name="Feedback" component={FeedbackScreen} />
-    <Stack.Screen name="FeedbackChat" component={FeedbackChatScreen} />
+    <Stack.Screen name="FeedbackChat" component={FeedbackConversationScreen} />
     <Stack.Screen name="EditProfile" component={EditProfileScreen} />
     <Stack.Screen name="DeleteUser" component={DeleteUserScreen} />
     <Stack.Screen name="UserPaymentMethods" component={UserPaymentMethods} />

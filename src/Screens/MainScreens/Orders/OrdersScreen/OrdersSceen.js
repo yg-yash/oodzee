@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import {Card} from 'react-native-elements';
 import Colors from '../../../../constants/Colors';
+import fonts from '../../../../constants/fonts';
 
 const orderList = [
   {
@@ -16,9 +17,10 @@ const orderList = [
     date: 'Jan 2020',
     orders: [
       {
+        id: 1,
         date: '12',
         day: 'Thu',
-        image: require('../../../../../assests/images/burger.jpg'),
+        image: require('../../../../../assets/images/burger.jpg'),
         title: 'Draggen Burger',
         subTitle: 'A One restaurent,  Vegas',
         quantity: 2,
@@ -26,9 +28,10 @@ const orderList = [
         delivered: false,
       },
       {
+        id: 2,
         date: '09',
         day: 'Mon',
-        image: require('../../../../../assests/images/burger.jpg'),
+        image: require('../../../../../assets/images/burger.jpg'),
         title: 'Draggen Burger',
         subTitle: 'A One restaurent,  Vegas',
         quantity: 2,
@@ -42,9 +45,10 @@ const orderList = [
     date: 'Dec 2019',
     orders: [
       {
+        id: 1,
         date: '28',
         day: 'Fri',
-        image: require('../../../../../assests/images/burger.jpg'),
+        image: require('../../../../../assets/images/burger.jpg'),
         title: 'Draggen Burger',
         subTitle: 'A One restaurent,  Vegas',
         quantity: 2,
@@ -52,9 +56,10 @@ const orderList = [
         delivered: true,
       },
       {
+        id: 2,
         date: '20',
         day: 'Wed',
-        image: require('../../../../../assests/images/burger.jpg'),
+        image: require('../../../../../assets/images/burger.jpg'),
         title: 'Draggen Burger',
         subTitle: 'A One restaurent,  Vegas',
         quantity: 2,
@@ -62,9 +67,10 @@ const orderList = [
         delivered: true,
       },
       {
+        id: 3,
         date: '01',
         day: 'Sat',
-        image: require('../../../../../assests/images/burger.jpg'),
+        image: require('../../../../../assets/images/burger.jpg'),
         title: 'Draggen Burger',
         subTitle: 'A One restaurent,  Vegas',
         quantity: 2,
@@ -80,13 +86,19 @@ const Orders = ({navigation}) => {
     navigation.setOptions({
       headerShown: true,
       headerTitleAlign: 'center',
+      headerTitleStyle: {
+        fontFamily: fonts.FONT_REGULAR,
+        fontSize: 20,
+        lineHeight: 30,
+      },
     });
   }, [navigation]);
 
   const renderOrderItem = item => (
     <TouchableHighlight
       underlayColor={Colors.underlaylightColor}
-      onPress={() => navigation.navigate('OrderDetails')}>
+      onPress={() => navigation.navigate('OrderDetails')}
+      key={item.id}>
       <View style={styles.orderCardContainer}>
         <View style={styles.leftContainer}>
           <Text style={styles.itemDate}>{item.date}</Text>
@@ -146,7 +158,7 @@ const Orders = ({navigation}) => {
     <View style={styles.screen}>
       <FlatList
         data={orderList}
-        keyExtractor={(item, index) => item.id}
+        keyExtractor={(item, index) => item.id.toString()}
         renderItem={({item}) => renderOrderList(item)}
       />
     </View>
@@ -159,11 +171,15 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderTopStartRadius: 15,
     borderTopEndRadius: 15,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 8,
+    },
+    shadowOpacity: 0.44,
+    shadowRadius: 10.32,
+
     elevation: 16,
-    shadowColor: '#999999',
-    shadowOffset: {width: 0, height: 2},
-    shadowOpacity: 0.4,
-    shadowRadius: 6,
     overflow: 'hidden',
   },
   container: {
@@ -176,6 +192,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     lineHeight: 18,
     color: '#999999',
+    fontFamily: fonts.FONT_REGULAR,
   },
   orderCardContainer: {
     flex: 1,
@@ -197,10 +214,12 @@ const styles = StyleSheet.create({
   itemDate: {
     fontSize: 18,
     lineHeight: 27,
+    fontFamily: fonts.FONT_REGULAR,
   },
   itemDay: {
     fontSize: 10,
     lineHeight: 15,
+    fontFamily: fonts.FONT_REGULAR,
   },
   cardImageContainer: {
     flex: 1,
@@ -230,12 +249,14 @@ const styles = StyleSheet.create({
   titleText: {
     fontSize: 14,
     lineHeight: 18,
+    fontFamily: fonts.FONT_REGULAR,
   },
   subTitle: {
     fontSize: 8,
-    lineHeight: 8,
+    lineHeight: 12,
     textTransform: 'uppercase',
     color: '#999999',
+    fontFamily: fonts.FONT_REGULAR,
   },
   productsDetails: {
     flexDirection: 'row',
@@ -252,6 +273,7 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 10,
     borderRadius: 16,
+    fontFamily: fonts.FONT_REGULAR,
   },
   smallLine: {
     borderWidth: 1,
@@ -260,12 +282,14 @@ const styles = StyleSheet.create({
   detailsText: {
     fontSize: 10,
     lineHeight: 15,
+    fontFamily: fonts.FONT_REGULAR,
   },
   trackText: {
     fontSize: 10,
     lineHeight: 12,
     textAlign: 'center',
     color: '#999999',
+    fontFamily: fonts.FONT_REGULAR,
   },
 });
 
